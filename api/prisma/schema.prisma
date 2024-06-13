@@ -14,8 +14,57 @@ datasource db {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  email        String   @unique
-  auth0Id      String   @unique @default("")
-  name         String?
+  id      Int     @id @default(autoincrement())
+  email   String  @unique
+  auth0Id String  @unique @default("")
+  name    String?
+}
+
+model cafeOwner {
+  id             Int     @id @default(autoincrement())
+  email          String  @unique // must be a business email
+  auth0Id        String  @unique @default("")
+  name           String?
+  BusinessNumber String? @unique // 9 digits + 2 letters + 4 digits format
+}
+
+model Admin {
+  id      Int     @id @default(autoincrement())
+  email   String  @unique
+  auth0Id String  @unique @default("")
+  name    String?
+}
+
+model festival {
+  id                Int      @id @default(autoincrement())
+  name              String?
+  startDate         DateTime
+  endDate           DateTime
+  Location          String?
+  numberOfAttendees Int
+  cafe              Cafe     @relation(fields: [cafeId], references: [id])
+  cafeId            Int
+}
+
+model foodItem {
+  id          Int     @id @default(autoincrement())
+  name        String?
+  imageUrl    String?
+  Summary     String?
+  receipeLink String?
+  cafe        Cafe    @relation(fields: [cafeId], references: [id])
+  cafeId      Int
+  category    String?
+}
+
+model Cafe {
+  id            Int        @id @default(autoincrement())
+  name          String?
+  hours         String?
+  address       String?
+  foodItems     foodItem[]
+  prices        Int // should be associted with each food items individually, different for any particular cafe 
+  contactNumber Int // 10 digit 
+  contactEmail  String     @unique // must be a business email
+  festival      festival[]
 }
