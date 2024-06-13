@@ -35,27 +35,27 @@ model Admin {
   name    String?
 }
 
-model festival {
-  id                Int      @id @default(autoincrement())
+model Festival {
+  id                Int        @id @default(autoincrement())
   name              String?
   tagline           String?
   startDate         DateTime
   endDate           DateTime
   Location          String?
   numberOfAttendees Int
-  cafe              Cafe     @relation(fields: [cafeId], references: [id])
-  cafeId            Int
+  foodItems         FoodItem[]
+  cafes             Cafe[]
 }
 
-model foodItem {
-  id          Int     @id @default(autoincrement())
+model FoodItem {
+  id          Int        @id @default(autoincrement())
   name        String?
   imageUrl    String?
   Summary     String?
   receipeLink String?
-  cafe        Cafe    @relation(fields: [cafeId], references: [id])
-  cafeId      Int
+  cafe        Cafe[]
   category    String?
+  festival    Festival[]
 }
 
 model Cafe {
@@ -63,9 +63,9 @@ model Cafe {
   name          String?
   hours         String?
   address       String?
-  foodItems     foodItem[]
-  prices        Int // should be associted with each food items individually, different for any particular cafe 
+  foodItems     FoodItem[]
+  priceRange    Int        @default(0)
   contactNumber Int // 10 digit 
   contactEmail  String     @unique // must be a business email
-  festival      festival[]
+  festivals     Festival[]
 }
