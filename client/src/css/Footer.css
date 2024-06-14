@@ -1,0 +1,59 @@
+.footer {
+    background-color: darkgray;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+.content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.section {
+    flex: 1;
+    margin: 20px;
+    padding: 20px;
+    min-width: 200px;
+}
+
+.section h2 {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.section p {
+    line-height: 1.6;
+}
+
+.section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section ul li a{
+    color: gray;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.section ul li a:hover {
+    color: white;
+}
+
+.bottom {
+    background-color: darkgray;
+    color: black;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: 20px;
+    width: 100%;
+}

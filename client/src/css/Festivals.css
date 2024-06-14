@@ -1,0 +1,54 @@
+.section {
+    margin: 20px 0;
+    padding: 20px;
+    background: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color:darkturquoise;
+    min-height: 200px;
+}
+
+.section h2 {
+    margin-bottom: 20px !important;
+}
+
+/* css for festivals */
+img {
+    min-width: 150px;
+    height: 15rem;
+    padding: 0 15px;
+    /* object-fit: cover; */
+  }
+  
+  img:last-of-type {
+    padding-left: 0;
+  }
+  
+  .inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    height: 25rem;
+  }
+  
+  .wrapper {
+    position: absolute;
+    display: flex;
+  }
+  
+.wrapper section {
+    display: flex;
+    animation: swipe var(--speed) linear infinite backwards;
+    margin: 0;
+    padding: 0;
+  }
+  
+  @keyframes swipe {
+    0% {
+      transform: translate(0);
+    }
+  
+    100% {
+      transform: translate(-100%);
+    }
+  }

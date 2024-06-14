@@ -5,6 +5,7 @@ import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { AuthTokenProvider } from "./AuthTokenContext";
+import App from "./App";
 
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
@@ -25,7 +26,8 @@ root.render(
       <AuthTokenProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home />} />
+            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/" element={<App />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
