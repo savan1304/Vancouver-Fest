@@ -6,7 +6,7 @@ import Cafes from "./components/home/Cafes";
 import Footer from "./components/Footer";
 import './css/App.css'
 import AdminLogin from "./components/auth/AdminLogin"
-import Admin from "./components/home/Admin"
+import Festival from "./components/home/Festival";
 
 const images = [
     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80",
@@ -55,10 +55,11 @@ const App = () => {
                 <h1>Welcome to our Title</h1>
             </header>
             <main className="content">
-                <AdminLogin />
+                {/* <AdminLogin />
                 <Festivals images={festivals} speed={30000} />
                 <FoodItems />
-                <Cafes />
+                <Cafes /> */}
+                <Festival />
             </main>
             <div className="footer">
             <Footer />
