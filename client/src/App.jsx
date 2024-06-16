@@ -6,6 +6,7 @@ import Cafes from "./components/home/Cafes";
 import Footer from "./components/Footer";
 import './css/App.css'
 import AdminLogin from "./components/auth/AdminLogin"
+import Admin from "./components/home/Admin"
 
 const images = [
     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80",

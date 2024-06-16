@@ -16,8 +16,31 @@ const Festivals = ({images, speed}) => {
                         </div>
                     ))}
                     </section>
+
+
+                    <section style={{ "--speed": `${speed}ms` }}>
+                    {images.map(({ id, image }) => (
+                        <div className="image" key={id}>
+                        <img src={image} alt={id} />
+                        {/* <h3>{festivalName}</h3> */}
+                        {/* <h3 className="festival-name">{festivalName}</h3> */}
+                        </div>
+                    ))}
+                    </section>
+
+
+                    <section style={{ "--speed": `${speed}ms` }}>
+                    {images.map(({ id, image }) => (
+                        <div className="image" key={id}>
+                        <img src={image} alt={id} />
+                        {/* <h3>{festivalName}</h3> */}
+                        {/* <h3 className="festival-name">{festivalName}</h3> */}
+                        </div>
+                    ))}
+                    </section>
                     
                 </div>
+                
             </div>
             {/* <div className="content">
 

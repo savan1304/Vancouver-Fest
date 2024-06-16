@@ -39,5 +39,9 @@
   },
   "jest": {
     "resetMocks": false
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "dotenv-webpack": "^8.1.0"
   }
 }

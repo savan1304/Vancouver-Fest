@@ -20,12 +20,18 @@ model User {
   name    String?
 }
 
-model cafeOwner {
-  id             Int     @id @default(autoincrement())
-  email          String  @unique // must be a business email
-  auth0Id        String  @unique @default("")
+model Cafe {
+  id             Int        @id @default(autoincrement())
+  auth0Id        String     @unique @default("")
+  BusinessNumber String?    @unique // 9 digits + 2 letters + 4 digits format
   name           String?
-  BusinessNumber String? @unique // 9 digits + 2 letters + 4 digits format
+  hours          String?
+  address        String?
+  foodItems      FoodItem[]
+  priceRange     Int        @default(0)
+  contactNumber  Int // 10 digit 
+  contactEmail   String     @unique // must be a business email
+  festivals      Festival[]
 }
 
 model Admin {
@@ -56,16 +62,4 @@ model FoodItem {
   cafe        Cafe[]
   category    String?
   festival    Festival[]
-}
-
-model Cafe {
-  id            Int        @id @default(autoincrement())
-  name          String?
-  hours         String?
-  address       String?
-  foodItems     FoodItem[]
-  priceRange    Int        @default(0)
-  contactNumber Int // 10 digit 
-  contactEmail  String     @unique // must be a business email
-  festivals     Festival[]
 }
