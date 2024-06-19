@@ -5,6 +5,8 @@ import pkg from "@prisma/client";
 import morgan from "morgan";
 import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
+// import { AuthProvider } from '../client/src/AuthContext'; // Adjust path as needed
+
 
 // this is a middleware that will validate the access token sent by the client
 const requireAuth = auth({
@@ -29,6 +31,34 @@ app.get("/ping", (req, res) => {
 });
 
 // add your endpoints below this line
+// this endpoint is used by the client to verify the user status and to make sure the user is registered in our database once they signup with Auth0
+// if not registered in our database we will create it.
+// if the user is already registered we will return the user information
+app.post("/verify-user", requireAuth, async (req, res) => {
+  const auth0Id = req.auth.payload.sub;
+  const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
+  const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/password`];
+
+  const user = await prisma.user.findUnique({
+    where: {
+      auth0Id,
+    },
+  });
+
+  if (user) {
+    res.json(user);
+  } else {
+    const newUser = await prisma.user.create({
+      data: {
+        email,
+        auth0Id,
+        password,
+      },
+    });
+
+    res.json(newUser);
+  }
+});
 
 
 app.listen(8000, () => {

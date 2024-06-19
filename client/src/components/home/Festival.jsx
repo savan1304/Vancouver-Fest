@@ -28,9 +28,9 @@ const Festival = () => {
                 <h2>Festival specific contact</h2>
                 <p>Email: </p>
                 <form className="form">
-                    <label for="fname">First Name</label>
+                    <label htmlFor="fname">First Name</label>
                     <input type="text" id="fname" name="fname"></input><br/>
-                    <label for="email">Email</label>
+                    <label htmlFor="email">Email</label>
                     <input type="text" id="email" name="email"></input> <br />
                     <textarea placeholder="Your Message" ></textarea><br />
                     <button type="submit" className="btn btn-primary">Submit</button><br />

@@ -1,7 +1,16 @@
-import React from "react";
 import '../css/navbar.css'
 
+import React, { useState } from 'react';
+import axios from 'axios';
+
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
+
+    const { isAuthenticated, loginWithRedirect } = useAuth0();
+    const signUp = () => loginWithRedirect({ screen_hint: "signup" });
+
     return (
         <nav className="navbar">
             <div className="title">Title</div>
@@ -13,8 +22,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="loginLinks">
-                <a href="/login">Login</a>
-                <a href="/signUp">Sign Up</a>
+                <a href="/login" onClick={loginWithRedirect}>Login</a>
+                <a href="/signUp"  onClick={loginWithRedirect}>Sign Up</a>
             </div>
         </nav>
     );
