@@ -5,8 +5,6 @@ import pkg from "@prisma/client";
 import morgan from "morgan";
 import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
-// import { AuthProvider } from '../client/src/AuthContext'; // Adjust path as needed
-
 
 // this is a middleware that will validate the access token sent by the client
 const requireAuth = auth({
@@ -31,9 +29,6 @@ app.get("/ping", (req, res) => {
 });
 
 // add your endpoints below this line
-// this endpoint is used by the client to verify the user status and to make sure the user is registered in our database once they signup with Auth0
-// if not registered in our database we will create it.
-// if the user is already registered we will return the user information
 app.post("/verify-user", requireAuth, async (req, res) => {
   const auth0Id = req.auth.payload.sub;
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
@@ -60,6 +55,17 @@ app.post("/verify-user", requireAuth, async (req, res) => {
   }
 });
 
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  // Validate user credentials
+  const token = generateTokenForUser(user); // Implement this function to generate a JWT or session token
+  res.cookie('authToken', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', // Ensure the cookie is only sent over HTTPS
+    maxAge: 24 * 60 * 60 * 1000, // 1 day
+  });
+  res.status(200).send('Login successful');
+});
 
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");

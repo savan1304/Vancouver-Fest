@@ -1,6 +1,8 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     box-sizing: border-box;
+    background-color: #121212;
+    color: #f5f5f7
 }
 
 .app {

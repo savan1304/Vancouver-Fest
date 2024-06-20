@@ -1,52 +1,40 @@
-import React from "react";
-import '../../css/Festivals.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Assuming you are using axios for API requests
 
-const Festivals = ({images, speed}) => {
-    return (
-        <section id="festivals" className="section">
-            <h2>Festivals</h2>
-            <div className="inner">
-                <div className="wrapper">
-                    <section style={{ "--speed": `${speed}ms` }}>
-                    {images.map(({ id, image }) => (
-                        <div className="image" key={id}>
-                        <img src={image} alt={id} />
-                        {/* <h3>{festivalName}</h3> */}
-                        {/* <h3 className="festival-name">{festivalName}</h3> */}
-                        </div>
-                    ))}
-                    </section>
+function Festival() {
+  const [festivals, setFestivals] = useState([]);
 
+//   useEffect(() => {
+//     const fetchFestivals = async () => {
+//       try {
+//         const response = await axios.get("/api/festivals"); // Adjust API endpoint
+//         setFestivals(response.data);
+//       } catch (error) {
+//         console.error("Error fetching festivals:", error);
+//       }
+//     };
+//     fetchFestivals();
+//   }, []);
 
-                    <section style={{ "--speed": `${speed}ms` }}>
-                    {images.map(({ id, image }) => (
-                        <div className="image" key={id}>
-                        <img src={image} alt={id} />
-                        {/* <h3>{festivalName}</h3> */}
-                        {/* <h3 className="festival-name">{festivalName}</h3> */}
-                        </div>
-                    ))}
-                    </section>
-
-
-                    <section style={{ "--speed": `${speed}ms` }}>
-                    {images.map(({ id, image }) => (
-                        <div className="image" key={id}>
-                        <img src={image} alt={id} />
-                        {/* <h3>{festivalName}</h3> */}
-                        {/* <h3 className="festival-name">{festivalName}</h3> */}
-                        </div>
-                    ))}
-                    </section>
-                    
-                </div>
-                
-            </div>
-            {/* <div className="content">
-
-            </div> */}
-        </section>
-    )
+  return (
+    <div>
+        <h2>Festivals</h2>
+    </div>
+    // <div className="festival-div" id="festivals">
+    //   <h2>Upcoming Food Festivals</h2>
+    //   <div className="festival-list">
+    //     {festivals.map((festival) => (
+    //       <div key={festival.id} className="festival-item">
+    //         {/* Display festival information here */}
+    //         <img src={festival.imageUrl} alt={festival.name} />
+    //         <h3>{festival.name}</h3>
+    //         <p>{festival.description}</p>
+    //         {/* ...other details you want to show... */}
+    //       </div>
+    //     ))}
+    //   </div>
+    // </div>
+  );
 }
 
-export default Festivals;
+export default Festival;
