@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Cafe from "./home/Cafe";
-import Festival from "../components/home/Festivals";
+import Festivals from "../components/home/Festivals";
 import FoodItems from "../components/home/FoodItems";
 import Footer from "../components/Footer";
 
@@ -17,7 +17,7 @@ const Home = () => {
       
       {/* Display cafe, festival, and food items */}
       <Cafe /> 
-      <Festival />
+      <Festivals />
       <FoodItems />
       {/* <AuthDebugger /> */}
 

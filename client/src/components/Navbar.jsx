@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0
-import AuthDebugger from "./AuthDebugger"
+import AuthDebugger from "./AuthDebugger";
+import '../css/navbar.css';
 
 function Navbar() {
     const { logout } = useAuth0();

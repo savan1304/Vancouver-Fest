@@ -9,6 +9,11 @@ import Home from "./components/Home";
 
 export const Auth0ProviderWithHistory = ({ children }) => {
     const requestedScopes = ["profile", "email"];
+    // const history = useHistory();
+
+    // const onRedirectCallback = (appState) => {
+    //     history.push(appState?.returnTo || window.location.pathname);
+    // };
 
     return (
         <React.StrictMode>
@@ -21,6 +26,8 @@ export const Auth0ProviderWithHistory = ({ children }) => {
                         audience: process.env.REACT_APP_AUTH0_AUDIENCE,
                         scope: requestedScopes.join(" "),
                     }}
+                    // onRedirectCallback={onRedirectCallback}
+                    cacheLocation="localstorage"
                 >
                     <AuthTokenProvider>
                         <Routes>

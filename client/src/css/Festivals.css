@@ -1,4 +1,4 @@
-.section {
+/* .section {
     margin: 20px 0;
     padding: 20px;
     background: whitesmoke;
@@ -12,12 +12,12 @@
     margin-bottom: 20px !important;
 }
 
-/* css for festivals */
+/* css for festivals 
 img {
     min-width: 150px;
     height: 15rem;
     padding: 0 15px;
-    /* object-fit: cover; */
+    /* object-fit: cover; 
   }
   
   img:last-of-type {
@@ -51,4 +51,37 @@ img {
     100% {
       transform: translate(-100%);
     }
-  }
+  } */
+
+.block {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.block h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.block p {
+  margin: 5px 0;
+  font-size: 1em;
+}
+
+.block img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

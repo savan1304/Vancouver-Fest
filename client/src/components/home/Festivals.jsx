@@ -1,39 +1,66 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios"; // Assuming you are using axios for API requests
+import FestivalBlock from "./FestivalBlock";
 
 function Festival() {
-  const [festivals, setFestivals] = useState([]);
+    // const [festivals, setFestivals] = useState([]);
 
-//   useEffect(() => {
-//     const fetchFestivals = async () => {
-//       try {
-//         const response = await axios.get("/api/festivals"); // Adjust API endpoint
-//         setFestivals(response.data);
-//       } catch (error) {
-//         console.error("Error fetching festivals:", error);
-//       }
-//     };
-//     fetchFestivals();
-//   }, []);
+    // useEffect(() => {
+    //   const fetchFestivals = async () => {
+    //     try {
+    //       const response = await fetch('/api/festivals'); 
+    //       const data = await response.json();
+    //       setFestivals(data);
+    //     } catch (error) {
+    //       console.error('Error fetching festival data:', error);
+    //     }
+    //   };
+  
+    //   fetchFestivals();
+    // }, []);
 
+    const [festivals, setFestivals] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchFestivals = async () => {
+        try {
+            const response = await fetch('http://localhost:8000/api/festivals'); // Ensure this matches your server endpoint
+            if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            setFestivals(data);
+        } catch (error) {
+            console.error('Error fetching festival data:', error);
+            setError(error.message);
+        }
+        };
+
+        fetchFestivals();
+    }, []);
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
   return (
-    <div>
+    <div className="container">
         <h2>Festivals</h2>
+        {/* <FestivalBlock /> */}
+        {festivals.map((festival) => (
+        <FestivalBlock
+          key={festival.id}
+          id={festival.id}
+          name={festival.name}
+          tagline={festival.tagline}
+          startDate={festival.startDate}
+          endDate={festival.endDate}
+          location={festival.Location}
+          numberOfAttendees={festival.numberOfAttendees}
+        //   foodItems={festival.foodItems}
+        //   cafes={festival.cafes}
+        />
+      ))}
     </div>
-    // <div className="festival-div" id="festivals">
-    //   <h2>Upcoming Food Festivals</h2>
-    //   <div className="festival-list">
-    //     {festivals.map((festival) => (
-    //       <div key={festival.id} className="festival-item">
-    //         {/* Display festival information here */}
-    //         <img src={festival.imageUrl} alt={festival.name} />
-    //         <h3>{festival.name}</h3>
-    //         <p>{festival.description}</p>
-    //         {/* ...other details you want to show... */}
-    //       </div>
-    //     ))}
-    //   </div>
-    // </div>
   );
 }
 

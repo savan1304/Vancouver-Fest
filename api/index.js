@@ -67,6 +67,15 @@ app.post('/login', async (req, res) => {
   res.status(200).send('Login successful');
 });
 
+app.get('/api/festivals', async (req, res) => {
+  try {
+    const festivals = await prisma.festival.findMany();
+    res.json(festivals);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch festivals' });
+  }
+});
+
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");
 });
