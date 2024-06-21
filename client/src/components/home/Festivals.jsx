@@ -24,7 +24,7 @@ function Festival() {
     useEffect(() => {
         const fetchFestivals = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/festivals'); // Ensure this matches your server endpoint
+            const response = await fetch('http://localhost:8000/api/Festivals'); 
             if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
             }

@@ -67,12 +67,28 @@ app.post('/login', async (req, res) => {
   res.status(200).send('Login successful');
 });
 
-app.get('/api/festivals', async (req, res) => {
+app.get('/api/Festivals', async (req, res) => {
   try {
-    const festivals = await prisma.festival.findMany();
-    res.json(festivals);
+    const Festivals = await prisma.Festival.findMany();
+    res.json(Festivals);
   } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch festivals' });
+    res.status(500).json({ error: 'Failed to fetch Festivals' });
+  }
+});
+
+app.get('/api/Festival/:id', async (req, res) => {
+  console.log(req.params.id, "id")
+  try {
+    const Festival = await prisma.Festival.findUnique({
+      where: { id: parseInt(req.params.id) },
+    });
+    if (Festival) {
+      res.json(Festival);
+    } else {
+      res.status(404).json({ error: 'Festival not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch Festival' });
   }
 });
 

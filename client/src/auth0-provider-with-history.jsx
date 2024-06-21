@@ -41,3 +41,4 @@ export const Auth0ProviderWithHistory = ({ children }) => {
         </React.StrictMode>
     );
 };
+

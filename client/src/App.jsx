@@ -14,7 +14,7 @@ function App() {
 
     return (
         <div className="app">
-            <Routes>
+            {/* <Routes>
                 <Route path="/" element={<Home />} />
                 <Route
                     path="/"
@@ -22,7 +22,8 @@ function App() {
                         isAuthenticated ? <Home /> : <Navigate to="/" replace />
                     }
                 />
-            </Routes>
+            </Routes> */}
+            <Home />
         </div>
     );
 }
