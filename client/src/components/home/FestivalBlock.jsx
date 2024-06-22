@@ -9,10 +9,12 @@ const FestivalBlock = ({id, name, tagline, startDate, endDate, location, numberO
     // const history = useHistory();
 
     const handleNameClick = () => {
-      navigate(`/Festival`);
-        // return (
-        //     <Festival id={id} />
-        // )
+        console.log("Inside handleNameClick in FestivalBlock.jsx")
+      navigate(`/Festival/${id}`);
+      console.log("Afer navigate to /Festival line")
+        return (
+            <Festival id={id} />
+        )
         // history.push(`/Festival/${id}`);
     };
     return (

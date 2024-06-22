@@ -19,9 +19,10 @@ const Home = () => {
       <Navbar/>
       
       {/* Display cafe, festival, and food items */}
-      {/* <Cafe />  */}
-      {/* <Festivals />
-      <FoodItems /> 
+      <Cafe /> 
+      <Festivals />
+      {/* <FoodItems />  */}
+      {/* <Festival /> */}
       {/* <AuthDebugger /> */}
 
         <Routes>
@@ -33,7 +34,7 @@ const Home = () => {
           </React.Fragment>} 
         /> */}
         {/* <React.Fragment> */}
-          <Route path="/Festival" element={<Festival />} />
+          {/* <Route path="/Festival" element={<Festival />} /> */}
         {/* </React.Fragment> */}
           {/* <Route path="/Festival" render={(props) => (
             console.log("festival"),

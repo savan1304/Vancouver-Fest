@@ -4,14 +4,20 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 const LoginSignup = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
+  console.log("inside LoginSignUp.jsx")
+
+  const handleLogin = () => {
+    loginWithRedirect({
+      //TODO: redirect the user to the same page as they were after successful login
+      redirect_uri: `${window.location.origin}/Festival/:id`
+    });
+  };
 
   return (
     <div className="login-signup">
       {!isAuthenticated ? (
-        <div>
-          <h2>Please log in to view festival details</h2>
-          <button onClick={loginWithRedirect}>Log In</button>
-        </div>
+        handleLogin()
+
       ) : (
         <div>
           <h2>Welcome, {user.name}</h2>
