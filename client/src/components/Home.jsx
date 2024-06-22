@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../components/Navbar";
-import Cafe from "./home/Cafe";
+import Cafes from "./home/Cafes";
 import Festivals from "./home/Festivals";
 import Festival from "./home/Festival";
 import FoodItems from "../components/home/FoodItems";
@@ -19,7 +19,7 @@ const Home = () => {
       <Navbar/>
       
       {/* Display cafe, festival, and food items */}
-      <Cafe /> 
+      <Cafes /> 
       <Festivals />
       {/* <FoodItems />  */}
       {/* <Festival /> */}

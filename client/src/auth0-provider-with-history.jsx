@@ -7,6 +7,7 @@ import { AuthTokenProvider } from "./AuthTokenContext";
 import { Auth0Provider } from "@auth0/auth0-react";
 import Home from "./components/Home";
 import Festival from "./components/home/Festival";
+import Cafe from "./components/home/Cafe";
 
 export const Auth0ProviderWithHistory = ({ children }) => {
     const requestedScopes = ["profile", "email"];
@@ -36,6 +37,7 @@ export const Auth0ProviderWithHistory = ({ children }) => {
                             <Route path="/app" element={<App />} />
                             <Route path="*" element={<NotFound />} />
                             <Route path="/Festival/:id" element={<Festival />} />
+                            <Route path="/Cafe/:id" element={<Cafe />} />
                         </Routes>
                     </AuthTokenProvider>
                 </Auth0Provider>

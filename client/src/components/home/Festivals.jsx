@@ -2,21 +2,6 @@ import React, { useEffect, useState } from "react";
 import FestivalBlock from "./FestivalBlock";
 
 function Festival() {
-    // const [festivals, setFestivals] = useState([]);
-
-    // useEffect(() => {
-    //   const fetchFestivals = async () => {
-    //     try {
-    //       const response = await fetch('/api/festivals'); 
-    //       const data = await response.json();
-    //       setFestivals(data);
-    //     } catch (error) {
-    //       console.error('Error fetching festival data:', error);
-    //     }
-    //   };
-  
-    //   fetchFestivals();
-    // }, []);
 
     const [festivals, setFestivals] = useState([]);
     const [error, setError] = useState(null);

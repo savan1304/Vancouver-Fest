@@ -92,6 +92,32 @@ app.get('/api/Festival/:id', async (req, res) => {
   }
 });
 
+app.get('/api/Cafes', async (req, res) => {
+  try {
+    const Cafes = await prisma.Cafe.findMany();
+    res.json(Cafes);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch Cafes' });
+  }
+});
+
+app.get('/api/Cafe/:id', async (req, res) => {
+  console.log(req.params.id, "id")
+  try {
+    const Cafe = await prisma.Cafe.findUnique({
+      where: { id: parseInt(req.params.id) },
+    });
+    if (Cafe) {
+      res.json(Cafe);
+    } else {
+      res.status(404).json({ error: 'Cafe not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to fetch Cafe' });
+  }
+});
+
+
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");
 });

@@ -29,10 +29,11 @@ model Cafe {
   address        String?
   description    String?
   foodItems      FoodItem[]
-  priceRange     Int        @default(0)
+  priceRange     String?      
   // contactNumber  Int // 10 digit 
   contactEmail   String     @unique // must be a business email
-  festivals      Festival[]
+  festivalId     Int
+  festival       Festival   @relation(fields: [festivalId], references: [id])
 }
 
 model Admin {
@@ -60,7 +61,9 @@ model FoodItem {
   imageUrl    String?
   Summary     String?
   receipeLink String?
-  cafe        Cafe[]
+  cafeId      Int
+  cafe        Cafe       @relation(fields: [cafeId], references: [id])
   category    String?
-  festival    Festival[]
+  festivalId  Int
+  festival    Festival   @relation(fields: [festivalId], references: [id])
 }
