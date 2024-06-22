@@ -11,7 +11,6 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bubble Tea Specialist with breakfast',
         contactEmail: 'milk@gmail.com',
-        festivalId: 1  
       },
       {
         name: 'Commercial Street Cafe',
@@ -20,7 +19,6 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Low - key setup for daytime eats & coffee',
         contactEmail: 'commercial@gmail.com',
-        festivalId: 1  
       },
       {
         name: 'Liberte Cafe & REstaurant',
@@ -29,7 +27,6 @@ async function main() {
         priceRange: '10$-20$',
         description: 'Classy cafe & bakery with Filipino meals',
         contactEmail: 'liberte@gmailcom',
-        festivalId: 3  
       },
       {
         name: 'Wicked Cafe',
@@ -38,7 +35,6 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Fair-trade coffee & casual light meals',
         contactEmail: 'wickedcafe@gmail.com',
-        festivalId: 4  
       },
       {
         name: 'Root Cafe',
@@ -47,7 +43,6 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Canadian fare in a bright space',
         contactEmail: 'root@gmail.com',
-        festivalId: 5  
       },
       {
         name: 'Bel Cafe ',
@@ -56,7 +51,6 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Sleek counter serve for coffee & sweets',
         contactEmail: 'bel@gmail.com',
-        festivalId: 6  
       },
       {
         name: 'Nelson the Seagull cafe',
@@ -65,11 +59,27 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bakery-cafe with breakfast & lunch fare',
         contactEmail: 'nelson@gmail.com',
-        festivalId: 7  
       }
     ],
   });
-  console.log('Cafes data entered.');
+  console.log('cafes data entered.');
+
+  await prisma.cafe.update({
+    where: { id: 1 },  
+    data: {
+      festivals: { connect: [{ id: 1 }, { id: 2 }] },
+    },
+  });
+
+  await prisma.cafe.update({
+    where: { id: 2 }, 
+    data: {
+      festivals: { connect: [{ id: 2 }] },
+    },
+  });
+
+
+  console.log('cafes linked to festivals.');
 }
 
 main()

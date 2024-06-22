@@ -28,12 +28,11 @@ model Cafe {
   hours          String?
   address        String?
   description    String?
-  foodItems      FoodItem[]
+  foodItems      FoodItem[] @relation("CafeFoodItems")
   priceRange     String?      
   // contactNumber  Int // 10 digit 
-  contactEmail   String     @unique // must be a business email
-  festivalId     Int
-  festival       Festival   @relation(fields: [festivalId], references: [id])
+  contactEmail   String?    
+  festivals      Festival[] @relation("FestivalCafes")
 }
 
 model Admin {
@@ -51,8 +50,8 @@ model Festival {
   endDate           DateTime
   Location          String?
   numberOfAttendees Int
-  foodItems         FoodItem[]
-  cafes             Cafe[]
+  foodItems         FoodItem[] @relation("FestivalFoodItems")
+  cafes             Cafe[]     @relation("FestivalCafes")
 }
 
 model FoodItem {
@@ -61,9 +60,7 @@ model FoodItem {
   imageUrl    String?
   Summary     String?
   receipeLink String?
-  cafeId      Int
-  cafe        Cafe       @relation(fields: [cafeId], references: [id])
+  cafes       Cafe[]     @relation("CafeFoodItems")
+  festivals   Festival[] @relation("FestivalFoodItems")
   category    String?
-  festivalId  Int
-  festival    Festival   @relation(fields: [festivalId], references: [id])
 }
