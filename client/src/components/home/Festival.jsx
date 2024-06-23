@@ -4,6 +4,8 @@ import { useAuth0 } from '@auth0/auth0-react';
 import LoginSignup from './LoginSignup';
 import '../../css/Festival.css';
 import FestivalBlock from './FestivalBlock';
+import Navbar from '../Navbar';
+import Footer from '../Footer';
 
 const Festival = () => {
     const { id } = useParams();
@@ -49,6 +51,7 @@ const Festival = () => {
     return (
         <div>
             {/* <FestivalBlock /> */}
+            <Navbar />
             <FestivalBlock
                 id={festival.id}
                 name={festival.name}
@@ -96,6 +99,7 @@ const Festival = () => {
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </section>
+            <Footer />
         </div>
     );
 };

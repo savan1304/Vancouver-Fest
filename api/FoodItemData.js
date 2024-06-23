@@ -5,6 +5,7 @@ async function main() {
   await prisma.foodItem.createMany({
     data: [
       {
+        id: 2,
         name: 'Strawberry Milkshake',
         imageUrl: 'https://example.com/images/strawberry_milkshake.jpg',
         Summary: 'This strawberry milkshake is thick, creamy, and everything that you would hope a milkshake would be! This classic dessert is so delicious!',
@@ -12,6 +13,7 @@ async function main() {
         category: 'Drinks'
       },
       {
+        id: 3,
         name: 'Mango MilkShake',
         imageUrl: 'https://example.com/images/mango_milkshake.jpg',
         Summary: 'Mango milkshake made with fresh ripe mangoes is absolutely the perfect summer drink! Its a refreshing, drink and dessert rolled into one!',
@@ -19,6 +21,7 @@ async function main() {
         category: 'Drinks'
       },
       {
+        id: 4,
         name: 'Milk Boba Tea',
         imageUrl: 'https://example.com/images/milk_boba_tea.jpg',
         Summary: 'This classic bubble tea drink, originating from Taiwan, is one of the favorite summer drink recipes.',
@@ -26,6 +29,7 @@ async function main() {
         category: 'Drinks'
       },
       {
+        id: 5,
         name: 'Cappuccino',
         imageUrl: 'https://example.com/images/cappuccino.jpg',
         Summary: 'A cappuccino is a beloved espresso-based hot coffee drink made with layering of espresso, steamed milk, and milk foam on top.',
@@ -33,6 +37,7 @@ async function main() {
         category: 'Drinks'
       },
       {
+        id: 6,
         name: 'Donut',
         imageUrl: 'https://example.com/images/donut.jpg',
         Summary: 'Doughnuts are a kind of ring-shaped snack food popular in many countries, which are usually deep fried from flour doughs. ',
@@ -40,6 +45,7 @@ async function main() {
         category: 'Dessert'
       },
       {
+        id: 7,
         name: 'Chocolate Chip Cookie',
         imageUrl: 'https://example.com/images/chocolate_chip_cookie.jpg',
         Summary: 'Ultra-thick Bakery Style Chocolate Chip Cookies feature golden brown edges with gooey centers. ',
@@ -47,6 +53,7 @@ async function main() {
         category: 'Dessert'
       },
       {
+        id: 8,
         name: 'Macaron',
         imageUrl: 'https://example.com/images/macaron.jpg',
         Summary: 'Macaron a sweet and delicate French meringue cookies made with ground almonds.',
@@ -54,6 +61,7 @@ async function main() {
         category: 'Dessert'
       },
       {
+        id: 9,
         name: 'Strawberry Shortcake',
         imageUrl: 'https://example.com/images/strawberry_shortcake.jpg',
         Summary: 'A tender vanilla cake filled with layers of whipped cream frosting and juicy strawberries.',
@@ -61,6 +69,7 @@ async function main() {
         category: 'Dessert'
       },
       {
+        id: 10,
         name: 'Arrabiata Pasta',
         imageUrl: 'https://example.com/images/arrabiata_pasta.jpg',
         Summary: 'Penne arrabbiata - spicy Italian pasta dish that packs a punch! Excellent quick meal, with a garlic chilli Arrabbiata sauce.',
@@ -68,6 +77,7 @@ async function main() {
         category: 'Snacks'
       },
       {
+        id: 11,
         name: 'Margherita Pizza',
         imageUrl: 'https://example.com/images/margherita_pizza.jpg',
         Summary: 'Margherita pizza is a classic. Nothing fancy. Just dough, tomato sauce, mozzarella, fresh basil. Thats it!',
@@ -75,6 +85,7 @@ async function main() {
         category: 'Snacks'
       },
       {
+        id: 12,
         name: 'Nachos',
         imageUrl: 'https://example.com/images/nachos.jpg',
         Summary: 'These classic Tex-Mex nachos are loaded to the max with cheese,  refried beans, guacamole, and salsa. ',
@@ -82,6 +93,7 @@ async function main() {
         category: 'Snacks'
       },
       {
+        id: 13,
         name: 'French Fries',
         imageUrl: 'https://example.com/images/french_fries.jpg',
         Summary: 'A simple side dish to snack on.',
@@ -91,115 +103,102 @@ async function main() {
     ],
   });
 
-  async function main() {
-    for (const foodItem of foodItemsData) {
-      await prisma.foodItem.upsert({
-        where: { name: foodItem.name },
-        update: {},
-        create: foodItem,
-      });
-}
   console.log('Food items data entered.');
 
-    await prisma.$transaction([
-        prisma.foodItem.update({
-            where: { id: 1 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 2 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, {id: 5}, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 3 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 4 },  
-            data: {
-            cafes: { connect: [{ id: 4 }, { id: 5 }, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 5 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 5 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 },{ id: 6 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 6 },  
-            data: {
-            cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 7 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 4 }, { id: 6 }, { id: 7 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 8 },  
-            data: {
-            cafes: { connect: [{ id: 2 }, { id: 3 }, { id: 4 }, { id: 6 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 9 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 10 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 5 }] },
-            },
-        }),
-    
-        prisma.foodItem.update({
-            where: { id: 11 },  
-            data: {
-            cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }] },
-            },
-        },
-    
-        prisma.foodItem.update({
-            where: { id: 12 },  
-            data: {
-            cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }] },
-            },
-        }),
-    
-    )];
-        console.log('Food items linked to cafes.');    
-    
-  }
+  await prisma.foodItem.update({
+    where: { id: 1 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}, { id: 7 }] },
+    },
+  });
 
-  
-main() 
+  await prisma.foodItem.update({
+    where: { id: 2 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, {id: 5}, { id: 7 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 3 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 4 },  
+    data: {
+      cafes: { connect: [{ id: 4 }, { id: 5 }, { id: 7 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 5 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 5 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 },{ id: 6 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 6 },  
+    data: {
+      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 7 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 4 }, { id: 6 }, { id: 7 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 8 },  
+    data: {
+      cafes: { connect: [{ id: 2 }, { id: 3 }, { id: 4 }, { id: 6 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 9 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 10 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 5 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 11 },  
+    data: {
+      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }] },
+    },
+  });
+
+  await prisma.foodItem.update({
+    where: { id: 12 },  
+    data: {
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }] },
+    },
+  });
+  console.log('Food items linked to cafes.');
+}
+
+main()
   .catch((e) => {
     console.error(e);
     process.exit(1);
