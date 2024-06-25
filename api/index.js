@@ -28,30 +28,106 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-// add your endpoints below this line
+// // add your endpoints below this line
+// app.post("/verify-user", requireAuth, async (req, res) => {
+//   const auth0Id = req.auth.payload.sub;
+//   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
+//   const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/password`];
+
+//   const user = await prisma.user.findUnique({
+//     where: {
+//       auth0Id,
+//     },
+//   });
+
+//   if (user) {
+//     res.json(user);
+//   } else {
+//     const newUser = await prisma.user.create({
+//       data: {
+//         email,
+//         auth0Id,
+//         password,
+//       },
+//     });
+
+//     res.json(newUser);
+//   }
+// });
+// app.post("/verify-user", requireAuth, async (req, res) => {
+//   const auth0Id = req.auth.payload.sub;
+//   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
+//   const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/name`];
+
+//   const user = await prisma.user.findUnique({
+//     where: {
+//       auth0Id,
+//     },
+//   });
+
+//   if (user) {
+//     res.json(user);
+//   } else {
+//     const newUser = await prisma.user.create({
+//       data: {
+//         email,
+//         auth0Id,
+//         name,
+//       },
+//     });
+
+//     res.json(newUser);
+//   }
+// });
+// Endpoint to fetch user profile
 app.post("/verify-user", requireAuth, async (req, res) => {
   const auth0Id = req.auth.payload.sub;
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
-  const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/password`];
 
-  const user = await prisma.user.findUnique({
-    where: {
-      auth0Id,
-    },
+  let user = await prisma.user.findUnique({
+    where: { auth0Id },
   });
 
-  if (user) {
-    res.json(user);
-  } else {
-    const newUser = await prisma.user.create({
-      data: {
-        email,
-        auth0Id,
-        password,
-      },
+  if (!user) {
+    user = await prisma.user.create({
+      data: { email, auth0Id },
+    });
+  }
+
+  res.json({ id: user.id, email: user.email, auth0Id: user.auth0Id, name: user.name });
+});
+
+app.get("/api/user-profile/:id", requireAuth, async (req, res) => {
+  const { id } = req.params;
+  try {
+    const userProfile = await prisma.user.findUnique({
+      where: { auth0Id: id },
+    });
+    if (userProfile) {
+      res.json(userProfile);
+    } else {
+      res.status(404).json({ error: "User profile not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch user profile" });
+  }
+});
+
+// Endpoint to update user profile
+app.post("/api/user-profile/:id", requireAuth, async (req, res) => {
+  const { id } = req.params;
+  const { name, address, dateOfBirth, country } = req.body;
+
+  try {
+    const updatedUserProfile = await prisma.user.upsert({
+      where: { auth0Id: id },
+      update: { name, address, dateOfBirth, country },
+      create: { auth0Id: id, email: req.auth.payload.email, name, address, dateOfBirth, country },
     });
 
-    res.json(newUser);
+    res.json(updatedUserProfile);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update user profile" });
   }
 });
 

@@ -8,10 +8,13 @@ datasource db {
 }
 
 model User {
-  id      Int     @id @default(autoincrement())
-  email   String  @unique
-  auth0Id String  @unique @default("")
-  name    String? 
+  id         Int      @id @default(autoincrement())
+  email      String   @unique
+  auth0Id    String   @unique @default("")
+  name       String?
+  address    String?
+  dateOfBirth DateTime?
+  country    String?
 }
 
 model Cafe {

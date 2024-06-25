@@ -1,48 +1,52 @@
-// auth0-provider-with-history.jsx
-import React from "react";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
-import NotFound from "./components/NotFound";
-import App from "./App";
-import { AuthTokenProvider } from "./AuthTokenContext";
-import { Auth0Provider } from "@auth0/auth0-react";
-import Home from "./components/Home";
-import Festival from "./components/home/Festival";
-import Cafe from "./components/home/Cafe";
+    // auth0-provider-with-history.jsx
+    import React from "react";
+    import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+    import NotFound from "./components/NotFound";
+    import App from "./App";
+    import { AuthTokenProvider } from "./AuthTokenContext";
+    import { Auth0Provider } from "@auth0/auth0-react";
+    import Home from "./components/Home";
+    import Festival from "./components/home/Festival";
+    import Cafe from "./components/home/Cafe";
+    import UsersignupForm from "./components/UserSignupForm";
+    import UserProfilePage from "./components/UserProfilePage";
 
-export const Auth0ProviderWithHistory = ({ children }) => {
-    const requestedScopes = ["profile", "email"];
-    // const history = useHistory();
+    export const Auth0ProviderWithHistory = ({ children }) => {
+        const requestedScopes = ["profile", "email"];
+        // const history = useHistory();
 
-    // const onRedirectCallback = (appState) => {
-    //     history.push(appState?.returnTo || window.location.pathname);
-    // };
+        // const onRedirectCallback = (appState) => {
+        //     history.push(appState?.returnTo || window.location.pathname);
+        // };
 
-    return (
-        <React.StrictMode>
-            <BrowserRouter>
-                <Auth0Provider
-                    domain={process.env.REACT_APP_AUTH0_DOMAIN}
-                    clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
-                    authorizationParams={{
-                        redirect_uri: `${window.location.origin}`,
-                        audience: process.env.REACT_APP_AUTH0_AUDIENCE,
-                        scope: requestedScopes.join(" "),
-                    }}
-                    // onRedirectCallback={onRedirectCallback}
-                    cacheLocation="localstorage"
-                >
-                    <AuthTokenProvider>
-                        <Routes>
-                            <Route path="/" element={<Home />} />
-                            <Route path="/app" element={<App />} />
-                            <Route path="*" element={<NotFound />} />
-                            <Route path="/Festival/:id" element={<Festival />} />
-                            <Route path="/Cafe/:id" element={<Cafe />} />
-                        </Routes>
-                    </AuthTokenProvider>
-                </Auth0Provider>
-            </BrowserRouter>
-        </React.StrictMode>
-    );
-};
+        return (
+            <React.StrictMode>
+                <BrowserRouter>
+                    <Auth0Provider
+                        domain={process.env.REACT_APP_AUTH0_DOMAIN}
+                        clientId={process.env.REACT_APP_AUTH0_CLIENT_ID}
+                        authorizationParams={{
+                            redirect_uri: `${window.location.origin}`,
+                            audience: process.env.REACT_APP_AUTH0_AUDIENCE,
+                            scope: requestedScopes.join(" "),
+                        }}
+                        // onRedirectCallback={onRedirectCallback}
+                        cacheLocation="localstorage"
+                    >
+                        <AuthTokenProvider>
+                            <Routes>
+                                <Route path="/" element={<Home />} />
+                                <Route path="/app" element={<App />} />
+                                <Route path="*" element={<NotFound />} />
+                                <Route path="/Festival/:id" element={<Festival />} />
+                                <Route path="/Cafe/:id" element={<Cafe />} />
+                                {/* <Route path="/user-details" element={<UsersignupForm />} /> */}
+                                <Route path="/profile" element={<UserProfilePage />} />
+                            </Routes>
+                        </AuthTokenProvider>
+                    </Auth0Provider>
+                </BrowserRouter>
+            </React.StrictMode>
+        );
+    };
 
