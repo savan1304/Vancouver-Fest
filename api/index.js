@@ -5,6 +5,7 @@ import pkg from "@prisma/client";
 import morgan from "morgan";
 import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
+import axios from 'axios';
 
 // this is a middleware that will validate the access token sent by the client
 const requireAuth = auth({
@@ -15,10 +16,12 @@ const requireAuth = auth({
 
 const app = express();
 
-app.use(cors());
+app.use(cors({origin: 'http://localhost:3000'}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(morgan("dev"));
+axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+
 
 const { PrismaClient } = pkg;
 const prisma = new PrismaClient();
@@ -28,58 +31,6 @@ app.get("/ping", (req, res) => {
   res.send("pong");
 });
 
-// // add your endpoints below this line
-// app.post("/verify-user", requireAuth, async (req, res) => {
-//   const auth0Id = req.auth.payload.sub;
-//   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
-//   const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/password`];
-
-//   const user = await prisma.user.findUnique({
-//     where: {
-//       auth0Id,
-//     },
-//   });
-
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     const newUser = await prisma.user.create({
-//       data: {
-//         email,
-//         auth0Id,
-//         password,
-//       },
-//     });
-
-//     res.json(newUser);
-//   }
-// });
-// app.post("/verify-user", requireAuth, async (req, res) => {
-//   const auth0Id = req.auth.payload.sub;
-//   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
-//   const name = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/name`];
-
-//   const user = await prisma.user.findUnique({
-//     where: {
-//       auth0Id,
-//     },
-//   });
-
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     const newUser = await prisma.user.create({
-//       data: {
-//         email,
-//         auth0Id,
-//         name,
-//       },
-//     });
-
-//     res.json(newUser);
-//   }
-// });
-// Endpoint to fetch user profile
 app.post("/verify-user", requireAuth, async (req, res) => {
   const auth0Id = req.auth.payload.sub;
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
@@ -101,7 +52,8 @@ app.get("/api/user-profile/:id", requireAuth, async (req, res) => {
   const { id } = req.params;
   try {
     const userProfile = await prisma.user.findUnique({
-      where: { auth0Id: id },
+      // where: { auth0Id: id },
+      where: { id: parseInt(id) },
     });
     if (userProfile) {
       res.json(userProfile);
@@ -120,9 +72,12 @@ app.post("/api/user-profile/:id", requireAuth, async (req, res) => {
 
   try {
     const updatedUserProfile = await prisma.user.upsert({
-      where: { auth0Id: id },
+      // where: { auth0Id: id },
+      // update: { name, address, dateOfBirth, country },
+      // create: { auth0Id: id, email: req.auth.payload.email, name, address, dateOfBirth, country },
+      where: { id: parseInt(id) },
       update: { name, address, dateOfBirth, country },
-      create: { auth0Id: id, email: req.auth.payload.email, name, address, dateOfBirth, country },
+      create: { id: parseInt(id), email: req.auth.payload.email, name, address, dateOfBirth, country },
     });
 
     res.json(updatedUserProfile);
