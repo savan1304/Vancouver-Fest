@@ -128,6 +128,7 @@ import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginSignup from './LoginSignup';
 import '../../css/Cafe.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Cafe = () => {
     const { id } = useParams();
@@ -169,12 +170,12 @@ const Cafe = () => {
         <div className="container">
             <div className="cafe-details">
                 <p className="cafe-name">{cafe.name}</p>
-                <p className="cafe-description">{cafe.description}</p>
-                <p className="cafe-hours">Working hours: {cafe.hours}</p>
-                <p className="cafe-address">Address: {cafe.address}</p>
-                <p className="cafe-price">Price range: {cafe.priceRange}</p>
+                <p className="cafe-data">{cafe.description}</p>
+                <p className="cafe-data">Hours: {cafe.hours}</p>
+                <p className="cafe-data"><i className="fas fa-map-marker-alt"></i> {cafe.address}</p>
+                <p className="cafe-data">{cafe.priceRange}</p>
             </div>
-            <section className="cafe-activities">
+            {/* <section className="cafe-activities">
                 <h2>Food Items</h2>
                 <div className="activities-grid">
                     {cafe.foodItems && cafe.foodItems.map((item, index) => (
@@ -184,6 +185,10 @@ const Cafe = () => {
                         </div>
                     ))}
                 </div>
+            </section> */}
+            <section>
+                {/* <img src={cafe.imageUrl} alt='cafe' /> */}
+                {/* <img src='https://app.gemoo.com/share/image-annotation/664408296547057664?codeId=vzaek1E9WboLO&origin=imageurlgenerator&card=664408295225851904' alt='cafe' /> */}
             </section>
             <section className="cafe-contact">
                 <h2>cafe specific contact</h2>

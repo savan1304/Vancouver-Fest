@@ -11,6 +11,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bubble Tea Specialist with breakfast',
         contactEmail: 'milk@gmail.com',
+        imageUrl: 'https://app.gemoo.com/share/image-annotation/664408296547057664?codeId=vzaek1E9WboLO&origin=imageurlgenerator&card=664408295225851904',
       },
       {
         name: 'Commercial Street Cafe',
@@ -19,6 +20,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Low - key setup for daytime eats & coffee',
         contactEmail: 'commercial@gmail.com',
+        imageUrl: '',
       },
       {
         name: 'Liberte Cafe & REstaurant',
@@ -27,6 +29,7 @@ async function main() {
         priceRange: '10$-20$',
         description: 'Classy cafe & bakery with Filipino meals',
         contactEmail: 'liberte@gmailcom',
+        imageUrl: '',
       },
       {
         name: 'Wicked Cafe',
@@ -35,6 +38,7 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Fair-trade coffee & casual light meals',
         contactEmail: 'wickedcafe@gmail.com',
+        imageUrl: '',
       },
       {
         name: 'Root Cafe',
@@ -43,6 +47,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Canadian fare in a bright space',
         contactEmail: 'root@gmail.com',
+        imageUrl: '',
       },
       {
         name: 'Bel Cafe ',
@@ -51,6 +56,7 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Sleek counter serve for coffee & sweets',
         contactEmail: 'bel@gmail.com',
+        imageUrl: '',
       },
       {
         name: 'Nelson the Seagull cafe',
@@ -59,6 +65,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bakery-cafe with breakfast & lunch fare',
         contactEmail: 'nelson@gmail.com',
+        imageUrl: '',
       }
     ],
   });

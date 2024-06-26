@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    /* max-width: 1200px; */
     margin: 0 auto;
     padding: 20px;
 }
@@ -30,18 +30,17 @@ body {
     font-weight: bold;
     color: #333;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.cafe-description {
+.cafe-data {
     font-size: 1.2em;
-    color: #555;
+    font-weight: bold;
+    color: #333;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.cafe-hours, .cafe-address, .cafe-price {
-    font-size: 1em;
-    color: #333;
-}
 
 /* Cafe activities */
 .cafe-activities {

@@ -52,25 +52,21 @@ const Festival = () => {
         <div>
             {/* <FestivalBlock /> */}
             <Navbar />
-            <FestivalBlock
-                id={festival.id}
-                name={festival.name}
-                tagline={festival.tagline}
-                startDate={festival.startDate}
-                endDate={festival.endDate}
-                location={festival.Location}
-                numberOfAttendees={festival.numberOfAttendees}
-                // foodItems={festival.foodItems}
-                // cafes={festival.cafes}
-            />
+            <div  className='container'>
+            <div className="festival-details">
+                <p className="festival-name">{festival.name}</p>
+                <p className="festival-data">{festival.description}</p>
+                <p className="festival-data">Hours: {festival.hours}</p>
+                <p className="festival-data"><i className="fas fa-map-marker-alt"></i> {festival.address}</p>
+                <p className="festival-data">{festival.priceRange}</p>
+            </div>
             <div className="festival-buttons">
-                <button className="btn btn-primary">Participate as business</button>
-                <button className="btn btn-secondary">Become a sponsor</button>
+                <button className="btn btn-primary">Participate</button>
             </div>
             <section className="festival-details">
                 <h2>Festival Details</h2>
-                {/* <p>Expected No of attendees: [Number] | No of cafes: [Number]</p> */}
-                <p>Expected No of attendees: {festival.numberOfAttendees} | No of cafes: {festival.cafes ? festival.cafes.length : 0}</p>
+                {/* <p>Expected No of attendees: [Number] | No of festivals: [Number]</p> */}
+                <p>Expected No of attendees: {festival.numberOfAttendees} </p>
             </section>
             <section className="festival-activities">
                 <h2>What to expect?</h2>
@@ -99,6 +95,8 @@ const Festival = () => {
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
             </section>
+            </div>
+            
             <Footer />
         </div>
     );

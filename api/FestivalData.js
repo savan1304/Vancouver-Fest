@@ -10,7 +10,8 @@ async function main() {
         startDate: new Date('2024-07-12'),
         endDate: new Date('2024-07-18'),
         Location: 'Vancouver',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Mango Festival',
@@ -18,7 +19,8 @@ async function main() {
         startDate: new Date('2024-07-15'),
         endDate: new Date('2024-07-19'),
         Location: 'Burnaby',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Autumn Festival',
@@ -26,7 +28,8 @@ async function main() {
         startDate: new Date('2024-09-5'),
         endDate: new Date('2024-09-19'),
         Location: 'Richmond',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Festival of Light',
@@ -34,7 +37,8 @@ async function main() {
         startDate: new Date('2024-07-20'),
         endDate: new Date('2024-07-27'),
         Location: 'Vancouver',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Music Festival',
@@ -42,7 +46,8 @@ async function main() {
         startDate: new Date('2024-08-15'),
         endDate: new Date('2024-08-19'),
         Location: 'Coquitlam',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Summer Food Festival',
@@ -50,7 +55,8 @@ async function main() {
         startDate: new Date('2024-08-3'),
         endDate: new Date('2024-08-4'),
         Location: 'Langley',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       },
       {
         name: 'Food Truck Fest',
@@ -58,7 +64,8 @@ async function main() {
         startDate: new Date('2024-07-15'),
         endDate: new Date('2024-07-19'),
         Location: 'Burnaby',
-        numberOfAttendees: 0
+        numberOfAttendees: 0,
+        imageUrl: '',
       }
     ],
   });
