@@ -222,28 +222,6 @@ const UserProfilePage = () => {
   });
   const [isEditing, setIsEditing] = useState(false);
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const token = await getAccessTokenSilently();
-        // const response = await axios.get(`/api/user-profile/${user.sub.split('|')[1]}`, {
-        //   headers: {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user-profile/${user.sub.split('|')[1]}`, {
-            headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        setFormData(response.data);
-      } catch (error) {
-        console.error('Failed to fetch user profile:', error);
-      }
-    };
-
-    if (user) {
-      fetchProfile();
-    }
-  }, [user, getAccessTokenSilently]);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -258,17 +236,54 @@ const UserProfilePage = () => {
       const token = await getAccessTokenSilently();
     //   await axios.post(`/api/user-profile/${user.sub.split('|')[1]}`, formData, {
     //     headers: {
-    await axios.post(`${process.env.REACT_APP_API_URL}/api/user-profile/${user.sub.split('|')[1]}`, formData, {
+    await axios.post(`${process.env.REACT_APP_API_URL}/verify-user`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
+      console.log(formData)
       setIsEditing(false);
       alert('Profile updated successfully');
     } catch (error) {
       console.error('Failed to update profile:', error);
     }
   };
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const token = await getAccessTokenSilently();
+        // const response = await axios.get(`/api/user-profile/${user.sub.split('|')[1]}`, {
+        //   headers: {
+        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user-profile`, {
+            headers: {  
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        setFormData({
+          ...response.data,
+          dateOfBirth: formatDate(response.data.dateOfBirth), 
+        });
+      } catch (error) {
+        console.error('Failed to fetch user profile:', error);
+      }
+    };
+
+    if (user) {
+      fetchProfile();
+    }
+  }, [user, getAccessTokenSilently]);
+
+
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -280,7 +295,7 @@ const UserProfilePage = () => {
           <div className="profile-details">
             <p><strong>Name:</strong> {formData.name}</p>
             <p><strong>Address:</strong> {formData.address}</p>
-            <p><strong>Date of Birth:</strong> {formData.dateOfBirth}</p>
+            <p><strong>Date of Birth:</strong>{formData.dateOfBirth?.slice(0, 10)} </p>
             <p><strong>Country:</strong> {formData.country}</p>
             <button onClick={() => setIsEditing(true)}>Edit Profile</button>
           </div>

@@ -5,6 +5,14 @@ async function main() {
   await prisma.foodItem.createMany({
     data: [
       {
+        id: 1,
+        name: 'Pizza',
+        imageUrl: 'https://example.com/images/pizza',
+        Summary: 'Tasty',
+        receipeLink: 'https://therecipecritic.com/strawberry-milkshake/',
+        category: 'Snacks'
+      },
+      {
         id: 2,
         name: 'Strawberry Milkshake',
         imageUrl: 'https://example.com/images/strawberry_milkshake.jpg',

@@ -34,33 +34,57 @@ app.get("/ping", (req, res) => {
 app.post("/verify-user", requireAuth, async (req, res) => {
   const auth0Id = req.auth.payload.sub;
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
+  let { name, address, dateOfBirth, country } = req.body;
+  //const dateOfBirth = new Date(dob + "T00:00:00Z"); // Append time and timezone
+  dateOfBirth = new Date(dateOfBirth +  "T00:00:00Z")
 
   let user = await prisma.user.findUnique({
     where: { auth0Id },
   });
+  console.log("name:", name)
+  console.log("address:", address)
+  console.log("dateOfBirth:", dateOfBirth)
+  console.log("country:", country)
+
 
   if (!user) {
     user = await prisma.user.create({
-      data: { email, auth0Id },
+      data: { email, auth0Id, name, address, dateOfBirth, country },
+    });
+  }else {
+    // Update the existing user
+    user = await prisma.user.update({
+      where: { auth0Id },
+      data: { name, address, dateOfBirth, country },
     });
   }
 
   res.json({ id: user.id, email: user.email, auth0Id: user.auth0Id, name: user.name });
 });
 
-app.get("/api/user-profile/:id", requireAuth, async (req, res) => {
-  const { id } = req.params;
+app.get("/api/user-profile", requireAuth, async (req, res) => {
+  // const { id } = req.params;
+  const auth0Id = req.auth.payload.sub;
+  console.log(req.auth.payload)
   try {
-    const userProfile = await prisma.user.findUnique({
-      // where: { auth0Id: id },
-      where: { id: parseInt(id) },
+    const user = await prisma.user.findUnique({
+      where: { auth0Id },
+      // where: auth0Id,
     });
+
+    const userProfile = await prisma.user.findUnique({
+      where:{
+        id : user.id,
+      }
+    })
+
     if (userProfile) {
       res.json(userProfile);
     } else {
       res.status(404).json({ error: "User profile not found" });
     }
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: "Failed to fetch user profile" });
   }
 });
