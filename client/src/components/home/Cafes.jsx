@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CafeBlock from "./CafeBlock";
+import '../../css/Cafes.css'
 
 function Cafe() {
 
@@ -28,8 +29,12 @@ function Cafe() {
         return <div>Error: {error}</div>;
     }
   return (
-    <div className="container">
-        <h2>Cafes</h2>
+    <div >
+        <div className="cafe-heading">
+          <h2>Cafes</h2>
+        </div>
+        
+        <div className="container">
         {Cafes.map((Cafe) => (
         <CafeBlock
           key={Cafe.id}
@@ -41,6 +46,8 @@ function Cafe() {
           priceRange={Cafe.priceRange}
         />
       ))}
+        </div>
+        
     </div>
   );
 }

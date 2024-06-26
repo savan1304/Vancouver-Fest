@@ -28,23 +28,27 @@ function Festival() {
         return <div>Error: {error}</div>;
     }
   return (
-    <div className="container">
-        <h2>Festivals</h2>
-        {/* <FestivalBlock /> */}
-        {festivals.map((festival) => (
-        <FestivalBlock
-          key={festival.id}
-          id={festival.id}
-          name={festival.name}
-          tagline={festival.tagline}
-          startDate={festival.startDate}
-          endDate={festival.endDate}
-          location={festival.Location}
-          numberOfAttendees={festival.numberOfAttendees}
-        //   foodItems={festival.foodItems}
-        //   cafes={festival.cafes}
-        />
-      ))}
+    <div>
+        <div className="festival-heading">
+          <h2>Festivals</h2>
+        </div>
+        <div  className="container">
+          {festivals.map((festival) => (
+          <FestivalBlock
+            key={festival.id}
+            id={festival.id}
+            name={festival.name}
+            tagline={festival.tagline}
+            startDate={festival.startDate}
+            endDate={festival.endDate}
+            location={festival.Location}
+            numberOfAttendees={festival.numberOfAttendees}
+          //   foodItems={festival.foodItems}
+          //   cafes={festival.cafes}
+          />
+        ))}
+        </div>
+        
     </div>
   );
 }

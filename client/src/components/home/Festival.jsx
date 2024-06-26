@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginSignup from './LoginSignup';
-import '../../css/Festival.css';
+import '../../css/Festivals.css';
 import FestivalBlock from './FestivalBlock';
 import Navbar from '../Navbar';
 import Footer from '../Footer';

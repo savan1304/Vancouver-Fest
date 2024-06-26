@@ -19,14 +19,14 @@ const FestivalBlock = ({id, name, tagline, startDate, endDate, location, numberO
     };
     return (
         <div className='block'>
-            <header className=".header-festival">
+            <header >
                 <img src="" alt="Festival Name" />
-                <h2 onClick={handleNameClick} style={{ cursor: 'pointer', color: 'blue' }}>{name}</h2> 
+                <h2 onClick={handleNameClick} className='festival-name'>{name}</h2> 
                 {/* <h2>{name}</h2> */}
-                <p>{tagline}</p> {/* get tagline from festival table */}
-                <p>Start Date: {new Date(startDate).toLocaleDateString()}</p> 
-                <p>End Date: {new Date(endDate).toLocaleDateString()}</p>
-                <p>Location: {location}</p>
+                <p className="festival-data">{tagline}</p> {/* get tagline from festival table */}
+                <p className="festival-data">Start Date: {new Date(startDate).toLocaleDateString()}</p> 
+                <p className="festival-data">End Date: {new Date(endDate).toLocaleDateString()}</p>
+                <p className="festival-data">Location: {location}</p>
                 {/* <p>Number of Attendees: {numberOfAttendees}</p>get startDate, endDate from festival table */}
             </header>
         </div>

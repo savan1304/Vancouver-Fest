@@ -23,12 +23,12 @@
     background-color: grey;
 }
 
-ul {
+.navbar-ul {
     list-style: none;
     display: inline;
 }
 
-li {
+.navbar-li {
     text-decoration: none;
 }
 

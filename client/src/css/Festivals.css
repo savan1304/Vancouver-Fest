@@ -1,87 +1,64 @@
-/* .section {
-    margin: 20px 0;
-    padding: 20px;
-    background: whitesmoke;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color:darkturquoise;
-    min-height: 200px;
-}
-
-.section h2 {
-    margin-bottom: 20px !important;
-}
-
-/* css for festivals 
-img {
-    min-width: 150px;
-    height: 15rem;
-    padding: 0 15px;
-    /* object-fit: cover; 
-  }
-  
-  img:last-of-type {
-    padding-left: 0;
-  }
-  
-  .inner {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 25rem;
-  }
-  
-  .wrapper {
-    position: absolute;
-    display: flex;
-  }
-  
-.wrapper section {
-    display: flex;
-    animation: swipe var(--speed) linear infinite backwards;
-    margin: 0;
-    padding: 0;
-  }
-  
-  @keyframes swipe {
-    0% {
-      transform: translate(0);
-    }
-  
-    100% {
-      transform: translate(-100%);
-    }
-  } */
-
-.block {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin: 20px;
-  padding: 20px;
-  width: 300px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-.block h2 {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
-
-.block p {
-  margin: 5px 0;
-  font-size: 1em;
-}
-
-.block img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
-
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+.block {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+  flex: 1 0 21%; /* Adjusts to ensure three items per row on larger screens */
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.block:hover {
+  transform: scale(1.05);
+}
+
+.festival-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.festival-name {
+  cursor: pointer;
+  color: black;
+  font-size: 1.5em;
+  margin: 8px 0;
+}
+
+.festival-data {
+  font-size: 0.9em;
+  color: #666;
+  margin: 4px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .block {
+      flex: 1 0 45%; /* Adjusts to two items per row on medium screens */
+      margin: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .block {
+      flex: 1 0 90%; /* Adjusts to one item per row on small screens */
+      margin: 10px;
+  }
+}
+
+
+.festival-heading {
+  text-align: center;
 }

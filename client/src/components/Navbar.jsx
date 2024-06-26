@@ -1,47 +1,56 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0
+import { NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react"; 
 import AuthDebugger from "./AuthDebugger";
-import '../css/navbar.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function Navbar() {
-    const { logout } = useAuth0();
-    const { loginWithRedirect, isAuthenticated } = useAuth0();
+    const { logout, loginWithRedirect, isAuthenticated } = useAuth0();
 
     return (
-        <nav>
-            <ul>
-                {/* Navigation Links */}
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/">Cafes</Link> {/* Link to the cafe section on the home page */}
-                </li>
-                <li>
-                    <Link to="/">Festivals</Link>
-                </li>
-                <li>
-                    <Link to="/">Food Items</Link>
-                </li>
-                {/* Conditionally render the Login/Logout button */}
-                {isAuthenticated ? (
-                    <>
-                    <li><Link to="/profile">Profile</Link></li>
-                    <li>
-                        <Link onClick={() => logout({ returnTo: window.location.origin })}>Logout</Link>
-                    </li>
-                    </>
-                ) : (
-                    <li>
-                        <Link onClick={() => loginWithRedirect()}>Log In/Sign Up</Link>
-                    </li>
-                )}
-                <li>
-                    <AuthDebugger />
-                </li>
-            </ul>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container-fluid">
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <div className="collapse navbar-collapse" id="navbarNav">
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item me-4">
+                            <NavLink className="nav-link" to="/">Home</NavLink>
+                        </li>
+                        <li className="nav-item me-4">
+                            <NavLink className="nav-link" to="/">Cafes</NavLink>
+                        </li>
+                        <li className="nav-item me-4">
+                            <NavLink className="nav-link" to="/">Festivals</NavLink>
+                        </li>
+                        <li className="nav-item me-4">
+                            <NavLink className="nav-link" to="/">Food Items</NavLink>
+                        </li>
+                    </ul>
+                    <ul className="navbar-nav">
+                        {isAuthenticated ? (
+                            <>
+                                <li className="nav-item me-4">
+                                    <NavLink className="nav-link" to="/profile">Profile</NavLink>
+                                </li>
+                                <li className="nav-item me-4">
+                                    <NavLink className="nav-link" to="/" onClick={() => logout({ returnTo: window.location.origin })}>Logout</NavLink>
+                                </li>
+                            </>
+                        ) : (
+                            <li className="nav-item me-4">
+                                <NavLink className="nav-link" to="/" onClick={() => loginWithRedirect()}>Log In/Sign Up</NavLink>
+                            </li>
+                        )}
+                        {/* <li className="nav-item">
+                            <AuthDebugger />
+                        </li> */}
+                    </ul>
+                </div>
+            </div>
         </nav>
     );
 }
+
 export default Navbar;

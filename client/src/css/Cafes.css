@@ -1,8 +1,63 @@
-.section {
-    margin: 20px 0;
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     padding: 20px;
-    background: whitesmoke;
-    border-radius: 10px;
+}
+
+.block {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color:darkturquoise
+    text-align: center;
+    transition: transform 0.2s;
+    flex: 1 0 21%; /* Adjusts to ensure three items per row on larger screens */
+    max-width: 300px;
+    box-sizing: border-box;
+}
+
+.block:hover {
+    transform: scale(1.05);
+}
+
+.cafe-heading {
+    text-align: center;
+}
+
+.cafe-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.cafe-name {
+    cursor: pointer;
+    color: black;
+    font-size: 1.5em;
+    margin: 8px 0;
+}
+
+.cafe-data {
+    font-size: 0.9em;
+    color: #666;
+    margin: 4px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .block {
+        flex: 1 0 45%; /* Adjusts to two items per row on medium screens */
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .block {
+        flex: 1 0 90%; /* Adjusts to one item per row on small screens */
+        margin: 10px;
+    }
 }

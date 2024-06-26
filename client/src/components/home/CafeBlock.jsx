@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-// import '../../css/Cafes.css';
 import Cafe from './Cafe';
+import '../../css/Cafes.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 const CafeBlock = ({id, name, hours, address, description, priceRange}) => {
     const navigate = useNavigate();
@@ -13,14 +15,15 @@ const CafeBlock = ({id, name, hours, address, description, priceRange}) => {
         )
     };
     return (
-        <div className='block'>
-            <header className=".header-Cafe">
-                <img src="" alt="Cafe Name" />
-                <h2 onClick={handleNameClick} style={{ cursor: 'pointer', color: 'blue' }}>{name}</h2> 
-                <p>{description}</p>
-                <p>Working hours : {hours}</p>
-                <p>Address: {address}</p>
-                <p>Price range: {priceRange}</p>
+        <div className="block">
+            <header>
+                <img src="" alt="Cafe Name" className="cafe-image"/>
+                <h2 onClick={handleNameClick} className="cafe-name">{name}</h2> 
+                <p className="cafe-data">{description}</p>
+                <p className="cafe-data">Hours: {hours}</p>
+                <p className="cafe-data"><i className="fas fa-map-marker-alt"></i> {address}</p>
+                {/* icon before address */}
+                <p className="cafe-data">{priceRange}</p>
             </header>
         </div>
     );
