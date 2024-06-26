@@ -8,28 +8,29 @@ datasource db {
 }
 
 model User {
-  id         Int      @id @default(autoincrement())
-  email      String   @unique
-  auth0Id    String   @unique @default("")
-  name       String?
-  address    String?
+  id          Int       @id @default(autoincrement())
+  email       String    @unique
+  auth0Id     String    @unique @default("")
+  name        String?
+  address     String?
   dateOfBirth DateTime?
-  country    String?
+  country     String?
 }
 
 model Cafe {
-  id             Int        @id @default(autoincrement())
+  id           Int        @id @default(autoincrement())
+  imageUrl     String?
   // auth0Id        String     @unique @default("")
   // BusinessNumber String?    @unique // 9 digits + 2 letters + 4 digits format
-  name           String?
-  hours          String?
-  address        String?
-  description    String?
-  foodItems      FoodItem[] @relation("CafeFoodItems")
-  priceRange     String?      
+  name         String?
+  hours        String?
+  address      String?
+  description  String?
+  foodItems    FoodItem[] @relation("CafeFoodItems")
+  priceRange   String?
   // contactNumber  Int // 10 digit 
-  contactEmail   String?    
-  festivals      Festival[] @relation("FestivalCafes")
+  contactEmail String?
+  festivals    Festival[] @relation("FestivalCafes")
 }
 
 model Admin {
@@ -41,6 +42,7 @@ model Admin {
 
 model Festival {
   id                Int        @id @default(autoincrement())
+  imageUrl          String?
   name              String?
   tagline           String?
   startDate         DateTime
@@ -49,6 +51,7 @@ model Festival {
   numberOfAttendees Int
   foodItems         FoodItem[] @relation("FestivalFoodItems")
   cafes             Cafe[]     @relation("FestivalCafes")
+  weather           String?
 }
 
 model FoodItem {
