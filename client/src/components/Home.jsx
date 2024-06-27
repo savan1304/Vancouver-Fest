@@ -15,15 +15,9 @@ const Home = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <div className="home">
-      {/* Add title and navbar here */}
-      
-      {/* <Navbar/> */}
-
       <br /><br /><br /><br />
-      {/* Display cafe, festival, and food items */}
       <Cafes /> 
       <Festivals />
-      <Footer />
     </div>
   );
 };

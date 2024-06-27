@@ -14,15 +14,6 @@ function App() {
 
     return (
         <div className="app">
-            {/* <Routes>
-                <Route path="/" element={<Home />} />
-                <Route
-                    path="/"
-                    element={
-                        isAuthenticated ? <Home /> : <Navigate to="/" replace />
-                    }
-                />
-            </Routes> */}
             <Home />
         </div>
     );
