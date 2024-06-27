@@ -1,16 +1,18 @@
 import React from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
+import { Auth0ProviderWithHistory } from '../../auth0-provider-with-history';
 // import './LoginSignup.css';
 
 const LoginSignup = () => {
   const { loginWithRedirect, logout, user, isAuthenticated } = useAuth0();
   console.log("inside LoginSignUp.jsx")
+  const redirect_uri= `${window.location.origin}/Festival/:id`
+
 
   const handleLogin = () => {
-    loginWithRedirect({
-      //TODO: redirect the user to the same page as they were after successful login
-      redirect_uri: `${window.location.origin}/Festival/:id`
-    });
+    <Auth0Provider>
+    loginWithRedirect({redirect_uri});
+    </Auth0Provider>
   };
 
   return (

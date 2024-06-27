@@ -44,7 +44,10 @@
     ]
   },
   "jest": {
-    "resetMocks": false
+    "resetMocks": false,
+    "moduleNameMapper": {
+      "^axios$": "axios/dist/node/axios.cjs"
+    }
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

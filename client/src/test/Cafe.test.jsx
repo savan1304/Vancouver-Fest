@@ -1,54 +1,64 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useNavigate } from "react-router-dom";
-import Cafe from "../components/home/Cafe";
+import { render, screen, waitFor } from "@testing-library/react";
+import Cafe from "../components/home/Cafe"; // Adjust path as needed
+import CafeBlock from "../components/home/CafeBlock"; // Adjust path
 
-jest.mock("@auth0/auth0-react");
-jest.mock("react-router-dom", () => ({
-  useNavigate: jest.fn(),
-}));
+// Mock fetch API globally
+global.fetch = jest.fn();
 
-describe("Home Component Tests", () => {
-  const mockLoginWithRedirect = jest.fn();
-  const mockNavigate = jest.fn();
+describe("Cafe Component", () => {
+  // Sample cafe data
+  const mockCafes = [
+    {
+      id: 1,
+      name: "The Coffee Bean",
+      hours: "7 AM - 9 PM",
+      address: "123 Main St.",
+      description: "Cozy cafe with great coffee.",
+      priceRange: "$",
+      imageUrl: "cafe1.jpg",
+    },
+    {
+      id: 2,
+      name: "Java House",
+      hours: "8 AM - 10 PM",
+      address: "456 Elm St.",
+      description: "Modern cafe with a variety of drinks.",
+      priceRange: "$$",
+      imageUrl: "cafe2.jpg",
+    },
+  ];
 
-  beforeEach(() => {
-    useAuth0.mockReturnValue({
-      isAuthenticated: false,
-      loginWithRedirect: mockLoginWithRedirect,
+  test("renders cafes from API correctly", async () => {
+    // Mock successful fetch response
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => mockCafes,
     });
-    useNavigate.mockReturnValue(mockNavigate);
-  });
 
-  test("renders without crashing", () => {
     render(<Cafe />);
-    expect(screen.getByText("Food Items")).toBeInTheDocument();
-  });
 
-  test("displays Login button when not authenticated", () => {
-    render(<Cafe />);
-    expect(screen.getByText("Login")).toBeInTheDocument();
-  });
-
-  test("displays logout when authenticated", () => {
-    useAuth0.mockReturnValueOnce({
-      isAuthenticated: true,
-      loginWithRedirect: mockLoginWithRedirect,
+    // Wait for cafes to load
+    await waitFor(() => {
+        mockCafes.forEach(cafe => {
+          // Use a regex with the 'i' flag for case-insensitive matching
+          expect(screen.getByText(cafe.name)).toBeInTheDocument(); 
+          expect(screen.getByText(cafe.hours)).toBeInTheDocument();
+          expect(screen.getByText(cafe.address)).toBeInTheDocument();
+        });
+      });
     });
+
+  test("renders error message when fetch fails", async () => {
+    // Mock failed fetch response
+    fetch.mockRejectedValueOnce(new Error("API error"));
+
     render(<Cafe />);
-    expect(screen.getByText("Logout")).toBeInTheDocument();
-  });
 
-
-  test("Enter App button triggers navigation", () => {
-    useAuth0.mockReturnValueOnce({
-      isAuthenticated: true,
-      loginWithRedirect: mockLoginWithRedirect,
+    // Wait for error message
+    await waitFor(() => {
+      expect(screen.getByText("Error: API error")).toBeInTheDocument();
     });
-    render(<Cafe />);
-    fireEvent.click(screen.getByText("Festivals"));
-    expect(mockNavigate).toHaveBeenCalledWith("/Festivals");
   });
-
 });
+

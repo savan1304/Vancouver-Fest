@@ -42,9 +42,6 @@ function Navbar() {
                                 <NavLink className="nav-link" to="/" onClick={() => loginWithRedirect()}>Log In/Sign Up</NavLink>
                             </li>
                         )}
-                        {/* <li className="nav-item">
-                            <AuthDebugger />
-                        </li> */}
                     </ul>
                 </div>
             </div>

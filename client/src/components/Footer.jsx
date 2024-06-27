@@ -63,9 +63,9 @@ const Footer = () => {
                      <p>Phone: +1 000-000-0000</p>
                 </div>
             </div>
-            <div className="footer-bottom">
+            {/* <div className="footer-bottom">
                 <p>&copy; 2024 Cafe Listing. All rights reserved.</p>
-            </div>
+            </div> */}
         </footer>
     );
 };

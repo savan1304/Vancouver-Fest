@@ -15,7 +15,6 @@ const Home = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <div className="home">
-      <br /><br /><br /><br />
       <Cafes /> 
       <Festivals />
     </div>

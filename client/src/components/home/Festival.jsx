@@ -11,6 +11,8 @@ import getWeatherForAddress from './utils/weather';
 import getWeatherCondition from './utils/weatherCondition';
 import { format } from 'date-fns';
 
+
+
 const Festival = () => {
     const { id } = useParams();
     // const id = 1;
@@ -134,5 +136,6 @@ function convertDateFormat(date){
     const formattedDate = format(new Date(date), 'dd MMM yyyy');
     return formattedDate;
 }
+
 
 export default Festival;

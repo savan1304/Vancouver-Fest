@@ -25,6 +25,7 @@
 
 .cafe-heading {
     text-align: center;
+    color: rgb(255, 59, 48)
 }
 
 .cafe-image {
@@ -46,8 +47,6 @@
     border-radius: 10px;
 }
 
-
-  
 
 .cafe-name {
     cursor: pointer;
