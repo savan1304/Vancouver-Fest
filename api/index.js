@@ -136,6 +136,9 @@ app.get('/api/Festival/:id', async (req, res) => {
   try {
     const Festival = await prisma.festival.findUnique({
       where: { id: parseInt(req.params.id) },
+      include: {
+        cafes: true, // Include related cafes
+      },
     });
     if (Festival) {
       res.json(Festival);
