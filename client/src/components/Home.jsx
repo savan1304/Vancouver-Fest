@@ -15,9 +15,9 @@ const Home = () => {
   return (
     <div className="home">
       {/* Add title and navbar here */}
-      <h1>Welcome to [Your App Name]</h1>
+      <h1>Welcome to Vancouver Fest</h1>
       <Navbar/>
-      
+      <br /><br /><br /><br />
       {/* Display cafe, festival, and food items */}
       <Cafes /> 
       <Festivals />
