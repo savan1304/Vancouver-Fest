@@ -9,8 +9,6 @@ const Layout = ({ children }) => {
         <div>
             <h1>Vancouver Fest</h1>
             <Navbar />
-            <div className="greeting"><h3>Explore Cafes and Festivals around the city!</h3>
-            </div>
             <main>{children}</main>
             <Footer />
         </div>

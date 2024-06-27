@@ -118,7 +118,7 @@ const Festival = () => {
             
             </div>
             <section className="festival-activities">
-                <h2>Cafes paticipating in the festival</h2>
+                <h2>Paticipating Cafes </h2>
                 <div className="activities-grid">
                     {festival.cafes && festival.cafes.map((cafe, index) => (
                         <div key={index} className="activity-item2">

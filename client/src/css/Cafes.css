@@ -6,18 +6,18 @@
 }
 
 .cafe-block {
-    border: 1px solid rgb(84,84,86);
+    border: 1px solid #ddd;
     border-radius: 8px;
     padding: 16px;
     margin: 16px;
-    background-color: rgb(28,28,30);
+    /* background-color: rgb(28,28,30); */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.2s;
     flex: 1 0 21%; /* Adjusts to ensure three items per row on larger screens */
     max-width: 300px;
     box-sizing: border-box;
-    color:#f5f5f7
+    color:#f5f5f7;
 }
 
 .cafe-block:hover {
@@ -26,7 +26,7 @@
 
 .cafe-heading {
     text-align: center;
-    color: rgb(255, 59, 48)
+    color: rgb(68, 68, 70)
 }
 
 .cafe-image {
@@ -51,7 +51,7 @@
 
 .cafe-name {
     cursor: pointer;
-    color: #f5f5f7;
+    color: black;
     font-size: 1.5em;
     margin: 8px 0;
 }
