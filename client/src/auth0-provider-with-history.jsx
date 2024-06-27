@@ -11,6 +11,8 @@ import Cafe from "./components/home/Cafe";
 import UserProfilePage from "./components/UserProfilePage";
 import VerifyUser from "./components/VerifyUser";
 import Cafes from "./components/home/Cafes";
+import AuthDebugger from "./components/AuthDebugger";
+import Festivals from "./components/home/Festivals"
 
     export const Auth0ProviderWithHistory = ({ children }) => {
         const requestedScopes = ["profile", "email"];
@@ -44,6 +46,8 @@ import Cafes from "./components/home/Cafes";
                                 <Route path="/profile" element={<UserProfilePage />} />
                                 <Route path="/verify-user" element={<VerifyUser />} />
                                 <Route path="/Cafes" element={<Cafes />} />
+                                <Route path="/AuthDebugger" element={<AuthDebugger />} />
+                                <Route path="/Festivals" element={<Festivals />} />
                             </Routes>
                         </AuthTokenProvider>
                     </Auth0Provider>

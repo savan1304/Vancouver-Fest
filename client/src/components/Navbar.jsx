@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react"; 
-import AuthDebugger from "./AuthDebugger";
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function Navbar() {
@@ -19,13 +18,16 @@ function Navbar() {
                             <NavLink className="nav-link" to="/">Home</NavLink>
                         </li>
                         <li className="nav-item me-4">
-                            <NavLink className="nav-link" to="/">Cafes</NavLink>
+                            <NavLink className="nav-link" to="/Cafes">Cafes</NavLink>
                         </li>
                         <li className="nav-item me-4">
-                            <NavLink className="nav-link" to="/">Festivals</NavLink>
+                            <NavLink className="nav-link" to="/Festivals">Festivals</NavLink>
                         </li>
                         <li className="nav-item me-4">
                             <NavLink className="nav-link" to="/">Food Items</NavLink>
+                        </li>
+                        <li className="nav-item me-4">
+                            <NavLink className="nav-link" to="/AuthDebugger">AuthDebugger</NavLink>
                         </li>
                     </ul>
                     <ul className="navbar-nav">
