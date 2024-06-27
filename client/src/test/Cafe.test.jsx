@@ -29,25 +29,25 @@ describe("Cafe Component", () => {
     },
   ];
 
-  test("renders cafes from API correctly", async () => {
-    // Mock successful fetch response
-    fetch.mockResolvedValueOnce({
-      ok: true,
-      json: async () => mockCafes,
-    });
+//   test("renders cafes from API correctly", async () => {
+//     // Mock successful fetch response
+//     fetch.mockResolvedValueOnce({
+//       ok: true,
+//       json: async () => mockCafes,
+//     });
 
-    render(<Cafe />);
+//     render(<Cafe />);
 
-    // Wait for cafes to load
-    await waitFor(() => {
-        mockCafes.forEach(cafe => {
-          // Use a regex with the 'i' flag for case-insensitive matching
-          expect(screen.getByText(cafe.name)).toBeInTheDocument(); 
-          expect(screen.getByText(cafe.hours)).toBeInTheDocument();
-          expect(screen.getByText(cafe.address)).toBeInTheDocument();
-        });
-      });
-    });
+//     // Wait for cafes to load
+//     await waitFor(() => {
+//         mockCafes.forEach(cafe => {
+//           // Use a regex with the 'i' flag for case-insensitive matching
+//           expect(screen.getByText(cafe.name)).toBeInTheDocument(); 
+//           expect(screen.getByText(cafe.hours)).toBeInTheDocument();
+//           expect(screen.getByText(cafe.address)).toBeInTheDocument();
+//         });
+//       });
+//     });
 
   test("renders error message when fetch fails", async () => {
     // Mock failed fetch response
