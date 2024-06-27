@@ -38,9 +38,7 @@ import Festivals from "./components/home/Festivals"
                     >
                         <AuthTokenProvider>
                             <Routes>
-                                <Route path="/" element={<Home />} />
                                 <Route path="/app" element={<App />} />
-                                <Route path="*" element={<NotFound />} />
                                 <Route path="/Festival/:id" element={<Festival />} />
                                 <Route path="/Cafe/:id" element={<Cafe />} />
                                 <Route path="/profile" element={<UserProfilePage />} />
@@ -48,6 +46,8 @@ import Festivals from "./components/home/Festivals"
                                 <Route path="/Cafes" element={<Cafes />} />
                                 <Route path="/AuthDebugger" element={<AuthDebugger />} />
                                 <Route path="/Festivals" element={<Festivals />} />
+                                <Route path="/" element={<Home />} />
+                                <Route path="*" element={<NotFound />} />
                             </Routes>
                         </AuthTokenProvider>
                     </Auth0Provider>

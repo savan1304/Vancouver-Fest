@@ -147,9 +147,11 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
+    width: 60%;
     /* max-width: 800px; */
     /* margin-left: auto; */
-    /* margin-right: auto; */
+    margin-right: auto;
+    margin-top: 40px;
 }
 
 .cafe-comments h2 {

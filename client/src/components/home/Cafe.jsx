@@ -29,6 +29,7 @@ const Cafe = () => {
                 setComments(data.comments);
             } catch (error) {
                 console.error('Error fetching Cafe data:', error);
+                console.log(error.message)
                 setError(error.message);
             }
         };

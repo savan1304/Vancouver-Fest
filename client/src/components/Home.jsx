@@ -23,31 +23,6 @@ const Home = () => {
       {/* Display cafe, festival, and food items */}
       <Cafes /> 
       <Festivals />
-      {/* <FoodItems />  */}
-      {/* <Festival /> */}
-
-        <Routes>
-        {/* <Route path="/" element={
-          <React.Fragment>
-            <Cafe />
-            <Festivals />
-            <FoodItems />
-          </React.Fragment>} 
-        /> */}
-        {/* <React.Fragment> */}
-          {/* <Route path="/Festival" element={<Festival />} /> */}
-        {/* </React.Fragment> */}
-          {/* <Route path="/Festival" render={(props) => (
-            console.log("festival"),
-             <Festival {...props} /> 
-             
-          )} /> */}
-        </Routes>
-
-        {/* <FoodItems />  */}
-      {/* Conditionally render the Login/Signup button */}
-
-      {/* Footer */}
       <Footer />
     </div>
   );

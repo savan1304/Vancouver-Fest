@@ -32,7 +32,7 @@ app.get("/ping", (req, res) => {
 });
 
 app.post("/verify-user", requireAuth, async (req, res) => {
-  const auth0Id = req.auth.payload.sub;
+  const auth0Id = req.auth.payload.sub; 
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
   let { name, address, dateOfBirth, country } = req.body;
   //const dateOfBirth = new Date(dob + "T00:00:00Z"); // Append time and timezone
@@ -136,6 +136,9 @@ app.get('/api/Festival/:id', async (req, res) => {
   try {
     const Festival = await prisma.festival.findUnique({
       where: { id: parseInt(req.params.id) },
+      include: {
+        cafes: true, // Include related cafes
+      },
     });
     if (Festival) {
       res.json(Festival);
