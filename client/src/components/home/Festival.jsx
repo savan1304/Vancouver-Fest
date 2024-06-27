@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginSignup from './LoginSignup';
-import '../../css/Festivals.css';
+import '../../css/Festival.css';
 import FestivalBlock from './FestivalBlock';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
@@ -97,7 +97,7 @@ const Festival = () => {
         <div>
             {/* <FestivalBlock /> */}
             <Navbar />
-            <div className='container'>
+            {/* <div className='container'>
                 <div className="festival-details">
                     <p className="festival-name">{festival.name}</p>
                     <p className="festival-data">{festival.description}</p>
@@ -117,18 +117,18 @@ const Festival = () => {
                 </div>
                 <section className="festival-details">
                     <h2>Festival Details</h2>
-                    {/* <p>Expected No of attendees: [Number] | No of festivals: [Number]</p> */}
+                    {/* <p>Expected No of attendees: [Number] | No of festivals: [Number]</p> 
                     <p>Expected No of attendees: {festival.numberOfAttendees} </p>
                 </section>
                 <section className="festival-activities">
                     <h2>What to expect?</h2>
                     <div className="activities-grid">
-                        {/* Each div represents a food item or activity 
+                     Each div represents a food item or activity 
                     <div className="activity-item">
                         <img src="path-to-food-image" alt="Food Item" />
                         <p>Food Item Name</p>
                     </div>
-                    {/* Repeat for other items */}
+                    Repeat for other items
                         {festival.foodItems && festival.foodItems.map((item, index) => (
                             <div key={index} className="activity-item">
                                 <img src={item.image} alt={item.name} />
@@ -147,8 +147,41 @@ const Festival = () => {
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </form>
                 </section>
-            </div>
+            </div> */}
 
+            <div className="container">
+            <div className="festival-details">
+                <div className='left-half'>
+                    <img src={festival.imageUrl} alt={festival.name} />
+                </div>
+                <div className='right-half'>
+                    <p className="festival-name2">{festival.name}</p>
+                    <p className="festival-data2">{festival.tagline}</p>
+                    <p className="festival-data2"><i className="fas fa-map-marker-alt"></i> {festival.Location}</p>
+                    
+                    <p className="festival-data2">
+                        {convertDateFormat(festival.startDate)} 
+                    </p>                    
+                    <p className="festival-data2">
+                        {convertDateFormat(festival.endDate)} 
+                    </p>
+                    <p className="festival-data2"><i className="fas fa-cloud-sun-rain"></i> {festival.weather}</p>
+                    <p className="festival-data2">Number of Attendees: {festival.numberOfAttendees}</p>
+                </div>   
+            </div>
+            
+            </div>
+            <section className="festival-activities">
+                <h2>Cafes</h2>
+                <div className="activities-grid">
+                    {festival.cafes && festival.cafes.map((cafe, index) => (
+                        <div key={index} className="activity-item2">
+                            <img src={cafe.imageUrl} alt={cafe.name} />
+                            <p>{cafe.name}</p>
+                        </div>
+                    ))}
+                </div>
+            </section>
             <Footer />
         </div>
     );

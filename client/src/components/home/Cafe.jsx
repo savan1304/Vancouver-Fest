@@ -88,7 +88,7 @@ const Cafe = () => {
                 <h2>Food Items</h2>
                 <div className="activities-grid">
                     {cafe.foodItems && cafe.foodItems.map((item, index) => (
-                        <div key={index} className="activity-item">
+                        <div key={index} className="activity-item2">
                             <img src={item.imageUrl} alt={item.name} />
                             <p>{item.name}</p>
                         </div>
