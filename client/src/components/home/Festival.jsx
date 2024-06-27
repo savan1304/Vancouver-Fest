@@ -129,8 +129,7 @@ const Festival = () => {
                 </div>
             </section>
         </div>
-    );  
-    );  
+    );    
 };
 
 function convertDateFormat(date){
