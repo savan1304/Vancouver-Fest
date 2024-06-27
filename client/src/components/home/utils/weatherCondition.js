@@ -45,3 +45,4 @@ function getWeatherCondition(code) {
   }
 
 export default getWeatherCondition;
+
