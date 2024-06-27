@@ -5,7 +5,7 @@ import pkg from "@prisma/client";
 import morgan from "morgan";
 import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
-import axios from 'axios';
+import axios from 'axios'; 
 
 const requireAuth = auth({
   audience: process.env.AUTH0_AUDIENCE,
