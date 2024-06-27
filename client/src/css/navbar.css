@@ -1,41 +1,91 @@
+/* Navbar.css */
+
 * {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
 }
 
-
 .navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: lightgray;
-    padding: 10px 20px;
+}
+
+.navbar-brand a {
     color: white;
-}
-
-.links,
-.loginLinks {
-    display: flex;
-}
-
-.links,
-.loginLinks a {
-    color: white;
-    margin: 0 10px;
-    padding: 10px;
-}
-
-.links:hover {
-    transform: scale(1.1);
-    opacity: 0.8;
-    color: rgb(10, 132, 255);
-}
-
-.navbar-ul {
-    list-style: none;
-    display: inline;
-}
-
-.navbar-li {
     text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links li {
+    padding: 10px 0;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.navbar-links a:hover {
+    color: rgb(10, 132, 255);
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar-links li {
+        width: 100%;
+        text-align: left;
+        padding: 10px 20px;
+    }
+
+    .navbar-links a {
+        width: 100%;
+    }
 }
