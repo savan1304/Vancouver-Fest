@@ -30,6 +30,12 @@
   margin-bottom: 16px;
 }
 
+.festival-image:hover {
+  width: 100%;
+  height:100%;
+  border-radius: 10px;
+}
+
 .festival-name {
   cursor: pointer;
   color: black;

@@ -16,8 +16,8 @@ const Home = () => {
   return (
     <div className="home">
       {/* Add title and navbar here */}
-      <h1>Welcome to Vancouver Fest</h1>
-      <Navbar/>
+      
+      {/* <Navbar/> */}
 
       <br /><br /><br /><br />
       {/* Display cafe, festival, and food items */}
@@ -48,7 +48,7 @@ const Home = () => {
       {/* Conditionally render the Login/Signup button */}
 
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

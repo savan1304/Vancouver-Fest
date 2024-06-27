@@ -54,7 +54,7 @@ async function main() {
         tagline: 'Festival for fresh mangoes',
         startDate: new Date('2024-07-3'),
         endDate: new Date('2024-07-4'),
-        Location: 'Langley',
+        Location: 'Burnaby',
         numberOfAttendees: 0,
         imageUrl: 'https://bit.ly/45Fiqwo',
       },

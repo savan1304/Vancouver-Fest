@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CafeBlock from "./CafeBlock";
-import '../../css/Cafes.css'
+import '../../css/Cafes.css';
 
 function Cafe() {
 

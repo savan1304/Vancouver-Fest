@@ -24,9 +24,6 @@ function Navbar() {
                             <NavLink className="nav-link" to="/Festivals">Festivals</NavLink>
                         </li>
                         <li className="nav-item me-4">
-                            <NavLink className="nav-link" to="/">Food Items</NavLink>
-                        </li>
-                        <li className="nav-item me-4">
                             <NavLink className="nav-link" to="/AuthDebugger">AuthDebugger</NavLink>
                         </li>
                     </ul>

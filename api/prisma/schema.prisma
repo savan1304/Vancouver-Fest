@@ -20,7 +20,6 @@ model User {
 model Comment {
   id        Int      @id @default(autoincrement())
   name      String
-  email     String
   message   String
   createdAt DateTime @default(now())
   cafeId    Int
@@ -42,6 +41,7 @@ model Cafe {
   contactEmail String?
   festivals    Festival[] @relation("FestivalCafes")
   comments     Comment[]
+  likes          Int        @default(0)
 }
 
 model Admin {
@@ -63,6 +63,7 @@ model Festival {
   foodItems         FoodItem[] @relation("FestivalFoodItems")
   cafes             Cafe[]     @relation("FestivalCafes")
   weather           String?
+  likes          Int        @default(0)
 }
 
 model FoodItem {

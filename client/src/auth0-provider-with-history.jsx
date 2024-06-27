@@ -12,7 +12,8 @@ import UserProfilePage from "./components/UserProfilePage";
 import VerifyUser from "./components/VerifyUser";
 import Cafes from "./components/home/Cafes";
 import AuthDebugger from "./components/AuthDebugger";
-import Festivals from "./components/home/Festivals"
+import Festivals from "./components/home/Festivals";
+import Layout from "./layout";
 
     export const Auth0ProviderWithHistory = ({ children }) => {
         const requestedScopes = ["profile", "email"];
@@ -37,6 +38,7 @@ import Festivals from "./components/home/Festivals"
                         cacheLocation="localstorage"
                     >
                         <AuthTokenProvider>
+                            <Layout>
                             <Routes>
                                 <Route path="/" element={<Home />} />
                                 <Route path="/app" element={<App />} />
@@ -49,6 +51,7 @@ import Festivals from "./components/home/Festivals"
                                 <Route path="/AuthDebugger" element={<AuthDebugger />} />
                                 <Route path="/Festivals" element={<Festivals />} />
                             </Routes>
+                            </Layout>
                         </AuthTokenProvider>
                     </Auth0Provider>
                 </BrowserRouter>

@@ -15,6 +15,9 @@ const requireAuth = auth({
 });
 
 const app = express();
+// const userLikes = {};
+const cafeLikes = {}; // In-memory store for cafe likes
+const festivalLikes = {}; // In-memory store for festival likes
 
 app.use(cors({origin: 'http://localhost:3000'}));
 app.use(express.urlencoded({ extended: true }));
@@ -179,13 +182,12 @@ app.get('/api/Cafe/:id', async (req, res) => {
 });
 
 app.post('/api/comments', async (req, res) => {
-  const { name, email, message, cafeId } = req.body;
+  const { name, message, cafeId } = req.body;
 
   try {
       const newComment = await prisma.comment.create({
           data: {
               name,
-              email,
               message,
               cafeId : parseInt(cafeId),
           },
@@ -196,6 +198,130 @@ app.post('/api/comments', async (req, res) => {
       res.status(500).json({ error: 'Failed to save comment' });
   }
 });
+
+// // Endpoint to like a cafe
+// app.post('/api/cafe/:id/like', async (req, res) => {
+//   const { id } = req.params;
+//   const { userId } = req.body;
+//   console.log(userId)
+
+//   const userLikeKey = `cafe_${id}_user_${String(userId)}`;
+
+//   if (cafeLikes[userLikeKey]) {
+//     return res.status(400).json({ error: 'User has already liked this cafe' });
+//   }
+
+//   try {
+//     const updatedCafe = await prisma.cafe.update({
+//       where: { id: parseInt(id) },
+//       data: {
+//         likes: { increment: 1 },
+//       },
+//     });
+
+//     cafeLikes[userLikeKey] = true;
+
+//     res.json(updatedCafe);
+//   } catch (error) {
+//     console.error('Error liking cafe:', error);
+//     res.status(500).json({ error: 'Failed to like cafe' });
+//   }
+// });
+
+// // Endpoint to like a festival
+// app.post('/api/festival/:id/like', async (req, res) => {
+//   const { id } = req.params;
+//   const { userId } = req.body;
+
+//   const userLikeKey = `festival_${id}_user_${String(userId)}`;
+
+//   if (festivalLikes[userLikeKey]) {
+//     return res.status(400).json({ error: 'User has already liked this festival' });
+//   }
+
+//   console.log("Inside festival like api")
+//   try {
+//     const updatedFestival = await prisma.festival.update({
+//       where: { id: parseInt(id) },
+//       data: {
+//         likes: { increment: 1 },
+//       },
+//     });
+
+//     festivalLikes[userLikeKey] = true;
+
+//     res.json(updatedFestival);
+//   } catch (error) {
+//     console.error('Error liking festival:', error);
+//     res.status(500).json({ error: 'Failed to like festival' });
+//   }
+// });
+
+// app.post('/api/cafe/:id/like', async (req, res) => {
+//   const { id } = req.params;
+//   const { userId } = req.body;
+
+//   const userLikeKey = `cafe_${id}_user_${String(userId)}`;
+
+//   if (userLikes[userLikeKey]) {
+//     return res.status(400).json({ error: 'User has already liked this cafe' });
+//   }
+
+//   try {
+//     const updatedCafe = await prisma.cafe.update({
+//       where: { id: parseInt(id) },
+//       data: {
+//         likes: { increment: 1 },
+//       },
+//     });
+
+//     userLikes[userLikeKey] = true;
+
+//     res.json(updatedCafe);
+//   } catch (error) {
+//     console.error('Error liking cafe:', error);
+//     res.status(500).json({ error: 'Failed to like cafe' });
+//   }
+// });
+
+// // Endpoint to like a cafe
+// // app.post('/api/cafe/:id/like', async (req, res) => {
+// //   // const { id } = req.params;
+
+// //   try {
+// //     const updatedCafe = await prisma.cafe.update({
+// //       where: { id: parseInt(req.params.id) },
+// //       data: {
+// //         likes: { increment: 1 }
+// //       }
+// //     });
+
+// //     res.json(updatedCafe);
+// //   } catch (error) {
+// //     console.error('Error liking cafe:', error);
+// //     res.status(500).json({ error: 'Failed to like cafe' });
+// //   }
+// // });
+
+// // Endpoint to like a festival
+// app.post('/api/festival/:id/like', async (req, res) => {
+//   const { id } = req.params;
+
+//   try {
+//     const updatedFestival = await prisma.festival.update({
+//       where: { id: parseInt(id) },
+//       data: {
+//         likes: { increment: 1 }
+//       }
+//     });
+
+//     res.json(updatedFestival);
+//   } catch (error) {
+//     console.error('Error liking festival:', error);
+//     res.status(500).json({ error: 'Failed to like festival' });
+//   }
+// });
+
 
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");
