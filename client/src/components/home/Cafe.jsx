@@ -17,7 +17,7 @@ const Cafe = () => {
     useEffect(() => {
         const fetchCafe = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/Cafe/${id}?include=foodItems`);
+                const response = await fetch(`http://localhost:8000/api/Cafe/${id}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
