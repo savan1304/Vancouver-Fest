@@ -74,47 +74,47 @@ async function main() {
   await prisma.cafe.update({
     where: { id: 1 },  
     data: {
-      festivals: { connect: [{ id: 1 }, { id: 2 }] },
+      festivals: { connect: [{ id: 1 }, { id: 2 }, { id: 6 }, { id: 5 }] },
     },
   });
 
   await prisma.cafe.update({
     where: { id: 2 }, 
     data: {
-      festivals: { connect: [{ id: 2 }] },
+      festivals: { connect: [{ id: 1 }, { id: 2 }, { id: 6 }] },
     },
   });
 
   await prisma.cafe.update({
     where: { id: 3 },  
     data: {
-      festivals: { connect: [{ id: 3 }, { id: 4 }] },
+      festivals: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: 6 }] },
     },
   });
 
   await prisma.cafe.update({
     where: { id: 4 }, 
     data: {
-      festivals: { connect: [{ id: 2 }] },
+      festivals: { connect: [{ id: 1 }, { id: 2 }, { id: 6 }, { id: 5 }] },
     },
   });
 
   await prisma.cafe.update({
     where: { id: 5 }, 
     data: {
-      festivals: { connect: [{ id: 7 }, { id: 1 }, { id: 3 }] },
+      festivals: { connect: [{ id: 7 }, { id: 1 }, { id: 3 }, { id: 4 }] },
     },
   });
   await prisma.cafe.update({
     where: { id: 6 }, 
     data: {
-      festivals: { connect: [{ id: 7 }, { id: 4 }, { id: 5 }] },
+      festivals: { connect: [{ id: 1 }, { id: 7 }, { id: 4 }, { id: 5 }, { id: 6 }] },
     },
   });
   await prisma.cafe.update({
     where: { id: 7 }, 
     data: {
-      festivals: { connect: [{ id: 7 }, { id: 5 }] },
+      festivals: { connect: [{ id: 1 }, { id: 7 }, { id: 5 }, { id: 6 }, { id: 2 }] },
     },
   });
 

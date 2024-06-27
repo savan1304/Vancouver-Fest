@@ -103,28 +103,28 @@ async function main() {
   await prisma.foodItem.update({
     where: { id: 2 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, {id: 5}, { id: 7 }] },
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, {id: 5}, { id: 7 }, { id: 4 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 3 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}] },
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 4 }, {id: 5}, { id: 3 }, { id: 7 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 4 },  
     data: {
-      cafes: { connect: [{ id: 4 }, { id: 5 }, { id: 7 }] },
+      cafes: { connect: [{ id: 4 }, { id: 5 }, { id: 7 }, { id: 2 }, { id: 1 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 5 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }] },
+      cafes: { connect: [{ id: 1 }, { id: 3 }, { id: 4 }, { id: 2 }] },
     },
   });
 
@@ -138,21 +138,21 @@ async function main() {
   await prisma.foodItem.update({
     where: { id: 6 },  
     data: {
-      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }] },
+      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 5 }, { id: 6 }, { id: 7 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 7 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 4 }, { id: 6 }, { id: 7 }] },
+      cafes: { connect: [{ id: 1 }, { id: 4 }, { id: 6 }, { id: 7 }, { id: 2 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 8 },  
     data: {
-      cafes: { connect: [{ id: 2 }, { id: 3 }, { id: 4 }, { id: 6 }] },
+      cafes: { connect: [{ id: 2 }, { id: 3 }, { id: 4 }, { id: 6 }, { id: 7 }] },
     },
   });
 
@@ -166,21 +166,21 @@ async function main() {
   await prisma.foodItem.update({
     where: { id: 10 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 5 }] },
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 5 }, { id: 7 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 11 },  
     data: {
-      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }] },
+      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }, , { id: 4 }, , { id: 5 }] },
     },
   });
 
   await prisma.foodItem.update({
     where: { id: 12 },  
     data: {
-      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }] },
+      cafes: { connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 7 }] },
     },
   });
   console.log('Food items linked to cafes.');
