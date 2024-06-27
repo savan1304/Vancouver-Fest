@@ -94,8 +94,6 @@ const Festival = () => {
 
     return (
         <div>
-            <Navbar />
-
             <div className="container">
             <div className="festival-details">
                 <div className='left-half'>

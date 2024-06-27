@@ -1,9 +1,9 @@
-import Axios from "axios";
+import axios from "axios";
 
 const API_KEY = 'AIzaSyBXrC8AUuH-8EwZ0he_GdhAu8D18sya7Ps'
 
 async function getCoordsForAddress(address) {
-   const response = await Axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`);
+   const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`);
 
    const data = response.data;
 
