@@ -37,7 +37,7 @@
 .navbar-links {
     list-style: none;
     display: flex;
-    gap: 50px;
+    gap: 20px;
 }
 
 .navbar-links li {
@@ -74,7 +74,6 @@
         width: 200px;
         box-sizing: border-box;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: lightsteelblue
     }
 
     .navbar-links {
