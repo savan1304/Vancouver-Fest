@@ -134,7 +134,7 @@ app.get('/api/Festivals', async (req, res) => {
 app.get('/api/Festival/:id', async (req, res) => {
   console.log(req.params.id, "id")
   try {
-    const Festival = await prisma.Festival.findUnique({
+    const Festival = await prisma.festival.findUnique({
       where: { id: parseInt(req.params.id) },
     });
     if (Festival) {
@@ -157,10 +157,13 @@ app.get('/api/Cafes', async (req, res) => {
 });
 
 app.get('/api/Cafe/:id', async (req, res) => {
-  console.log(req.params.id, "id")
   try {
-    const Cafe = await prisma.Cafe.findUnique({
+    const Cafe = await prisma.cafe.findUnique({
       where: { id: parseInt(req.params.id) },
+      include: {
+        foodItems: true,
+        comments: true,
+      },
     });
     if (Cafe) {
       res.json(Cafe);
@@ -172,6 +175,24 @@ app.get('/api/Cafe/:id', async (req, res) => {
   }
 });
 
+app.post('/api/comments', async (req, res) => {
+  const { name, email, message, cafeId } = req.body;
+
+  try {
+      const newComment = await prisma.comment.create({
+          data: {
+              name,
+              email,
+              message,
+              cafeId : parseInt(cafeId),
+          },
+      });
+      res.status(201).json(newComment);
+  } catch (error) {
+    console.error(error);
+      res.status(500).json({ error: 'Failed to save comment' });
+  }
+});
 
 app.listen(8000, () => {
   console.log("Server running on http://localhost:8000 🎉 🚀");

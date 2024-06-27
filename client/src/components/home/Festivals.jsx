@@ -43,6 +43,7 @@ function Festival() {
             endDate={festival.endDate}
             location={festival.Location}
             numberOfAttendees={festival.numberOfAttendees}
+            imageUrl={festival.imageUrl}
           //   foodItems={festival.foodItems}
           //   cafes={festival.cafes}
           />

@@ -1,7 +1,9 @@
 import React from "react";
 import * as ReactDOMClient from "react-dom/client";
 import { Auth0ProviderWithHistory } from "./auth0-provider-with-history";
-import App from "./App"
+import App from "./App";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 
 const container = document.getElementById("root");

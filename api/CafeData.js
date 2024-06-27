@@ -11,7 +11,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bubble Tea Specialist with breakfast',
         contactEmail: 'milk@gmail.com',
-        imageUrl: 'https://app.gemoo.com/share/image-annotation/664408296547057664?codeId=vzaek1E9WboLO&origin=imageurlgenerator&card=664408295225851904',
+        imageUrl: 'https://bit.ly/4bii2oY',
       },
       {
         name: 'Commercial Street Cafe',
@@ -20,16 +20,16 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Low - key setup for daytime eats & coffee',
         contactEmail: 'commercial@gmail.com',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/3XKm3iV',
       },
       {
-        name: 'Liberte Cafe & REstaurant',
+        name: 'Liberte Cafe & Restaurant',
         hours: '10 AM to 9 PM',
         address: '3670 Vanness Ave',
         priceRange: '10$-20$',
         description: 'Classy cafe & bakery with Filipino meals',
         contactEmail: 'liberte@gmailcom',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/3zbi2cP',
       },
       {
         name: 'Wicked Cafe',
@@ -38,7 +38,7 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Fair-trade coffee & casual light meals',
         contactEmail: 'wickedcafe@gmail.com',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/3xnGNSR',
       },
       {
         name: 'Root Cafe',
@@ -47,7 +47,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Canadian fare in a bright space',
         contactEmail: 'root@gmail.com',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/3Xzvl0Z',
       },
       {
         name: 'Bel Cafe ',
@@ -56,7 +56,7 @@ async function main() {
         priceRange: '10$-25$',
         description: 'Sleek counter serve for coffee & sweets',
         contactEmail: 'bel@gmail.com',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/4eFfILt',
       },
       {
         name: 'Nelson the Seagull cafe',
@@ -65,7 +65,7 @@ async function main() {
         priceRange: '10$-15$',
         description: 'Bakery-cafe with breakfast & lunch fare',
         contactEmail: 'nelson@gmail.com',
-        imageUrl: '',
+        imageUrl: 'https://bit.ly/45NzWi7',
       }
     ],
   });
@@ -85,6 +85,38 @@ async function main() {
     },
   });
 
+  await prisma.cafe.update({
+    where: { id: 3 },  
+    data: {
+      festivals: { connect: [{ id: 3 }, { id: 4 }] },
+    },
+  });
+
+  await prisma.cafe.update({
+    where: { id: 4 }, 
+    data: {
+      festivals: { connect: [{ id: 2 }] },
+    },
+  });
+
+  await prisma.cafe.update({
+    where: { id: 5 }, 
+    data: {
+      festivals: { connect: [{ id: 7 }, { id: 1 }, { id: 3 }] },
+    },
+  });
+  await prisma.cafe.update({
+    where: { id: 6 }, 
+    data: {
+      festivals: { connect: [{ id: 7 }, { id: 4 }, { id: 5 }] },
+    },
+  });
+  await prisma.cafe.update({
+    where: { id: 7 }, 
+    data: {
+      festivals: { connect: [{ id: 7 }, { id: 5 }] },
+    },
+  });
 
   console.log('cafes linked to festivals.');
 }

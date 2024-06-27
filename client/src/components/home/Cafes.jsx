@@ -44,6 +44,7 @@ function Cafe() {
           address={Cafe.address}
           description={Cafe.description}
           priceRange={Cafe.priceRange}
+          imageUrl={Cafe.imageUrl}
         />
       ))}
         </div>
