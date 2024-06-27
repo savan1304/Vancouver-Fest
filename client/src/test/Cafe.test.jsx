@@ -1,7 +1,9 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import Cafe from "../components/home/Cafe"; // Adjust path as needed
-import CafeBlock from "../components/home/CafeBlock"; // Adjust path
+// import Cafe from "../components/home/Cafe"; // Adjust path as needed
+// import CafeBlock from "../components/home/CafeBlock"; // Adjust path
+import Cafe from "../components/home/Cafes";
+import CafeBlock from "../components/home/CafeBlock";
 
 // Mock fetch API globally
 global.fetch = jest.fn();
