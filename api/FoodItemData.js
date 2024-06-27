@@ -5,97 +5,85 @@ async function main() {
   await prisma.foodItem.createMany({
     data: [
       {
-        id: 2,
         name: 'Strawberry Milkshake',
-        imageUrl: 'https://example.com/images/strawberry_milkshake.jpg',
+        imageUrl: 'https://bit.ly/3RLP6ie',
         Summary: 'This strawberry milkshake is thick, creamy, and everything that you would hope a milkshake would be! This classic dessert is so delicious!',
         receipeLink: 'https://therecipecritic.com/strawberry-milkshake/',
         category: 'Drinks'
       },
       {
-        id: 3,
         name: 'Mango MilkShake',
-        imageUrl: 'https://example.com/images/mango_milkshake.jpg',
+        imageUrl: 'https://bit.ly/3VIYCUr',
         Summary: 'Mango milkshake made with fresh ripe mangoes is absolutely the perfect summer drink! Its a refreshing, drink and dessert rolled into one!',
         receipeLink: 'https://www.indianhealthyrecipes.com/mango-milk-shake-recipe/',
         category: 'Drinks'
       },
       {
-        id: 4,
         name: 'Milk Boba Tea',
-        imageUrl: 'https://example.com/images/milk_boba_tea.jpg',
+        imageUrl: 'https://bit.ly/4ceCZlL',
         Summary: 'This classic bubble tea drink, originating from Taiwan, is one of the favorite summer drink recipes.',
         receipeLink: 'https://tasty.co/recipe/boba-milk-tea',
         category: 'Drinks'
       },
       {
-        id: 5,
         name: 'Cappuccino',
-        imageUrl: 'https://example.com/images/cappuccino.jpg',
+        imageUrl: 'https://bit.ly/3VNgMEG',
         Summary: 'A cappuccino is a beloved espresso-based hot coffee drink made with layering of espresso, steamed milk, and milk foam on top.',
         receipeLink: 'https://www.thespruceeats.com/how-to-make-cappuccinos-766116',
         category: 'Drinks'
       },
       {
-        id: 6,
         name: 'Donut',
-        imageUrl: 'https://example.com/images/donut.jpg',
+        imageUrl: 'https://bit.ly/3VIsS1s',
         Summary: 'Doughnuts are a kind of ring-shaped snack food popular in many countries, which are usually deep fried from flour doughs. ',
         receipeLink: 'https://sallysbakingaddiction.com/how-to-make-homemade-glazed-doughnuts/',
         category: 'Dessert'
       },
       {
-        id: 7,
         name: 'Chocolate Chip Cookie',
-        imageUrl: 'https://example.com/images/chocolate_chip_cookie.jpg',
+        imageUrl: 'https://bit.ly/3XGKttC',
         Summary: 'Ultra-thick Bakery Style Chocolate Chip Cookies feature golden brown edges with gooey centers. ',
         receipeLink: 'https://joyfoodsunshine.com/the-most-amazing-chocolate-chip-cookies/',
         category: 'Dessert'
       },
       {
-        id: 8,
         name: 'Macaron',
-        imageUrl: 'https://example.com/images/macaron.jpg',
+        imageUrl: 'https://bit.ly/3xwCioY',
         Summary: 'Macaron a sweet and delicate French meringue cookies made with ground almonds.',
         receipeLink: 'https://sugarspunrun.com/french-macaron-recipe/',
         category: 'Dessert'
       },
       {
-        id: 9,
         name: 'Strawberry Shortcake',
-        imageUrl: 'https://example.com/images/strawberry_shortcake.jpg',
+        imageUrl: 'https://bit.ly/3zhfLwN',
         Summary: 'A tender vanilla cake filled with layers of whipped cream frosting and juicy strawberries.',
         receipeLink: 'https://cooking.nytimes.com/recipes/11823-strawberry-shortcake',
         category: 'Dessert'
       },
       {
-        id: 10,
         name: 'Arrabiata Pasta',
-        imageUrl: 'https://example.com/images/arrabiata_pasta.jpg',
+        imageUrl: 'https://bit.ly/3VWoUUy',
         Summary: 'Penne arrabbiata - spicy Italian pasta dish that packs a punch! Excellent quick meal, with a garlic chilli Arrabbiata sauce.',
         receipeLink: 'https://www.recipetineats.com/penne-all-arrabbiata-spicy-tomato-pasta/',
         category: 'Snacks'
       },
       {
-        id: 11,
         name: 'Margherita Pizza',
-        imageUrl: 'https://example.com/images/margherita_pizza.jpg',
+        imageUrl: 'https://bit.ly/3VH5ZvF',
         Summary: 'Margherita pizza is a classic. Nothing fancy. Just dough, tomato sauce, mozzarella, fresh basil. Thats it!',
         receipeLink: 'https://cookieandkate.com/margherita-pizza-recipe/',
         category: 'Snacks'
       },
       {
-        id: 12,
         name: 'Nachos',
-        imageUrl: 'https://example.com/images/nachos.jpg',
+        imageUrl: 'https://bit.ly/3REZZSD',
         Summary: 'These classic Tex-Mex nachos are loaded to the max with cheese,  refried beans, guacamole, and salsa. ',
         receipeLink: 'https://www.simplyrecipes.com/recipes/nachos/',
         category: 'Snacks'
       },
       {
-        id: 13,
         name: 'French Fries',
-        imageUrl: 'https://example.com/images/french_fries.jpg',
+        imageUrl: 'https://bit.ly/3ROHF9R',
         Summary: 'A simple side dish to snack on.',
         receipeLink: 'https://www.recipetineats.com/french-fries/',
         category: 'Snacks'
