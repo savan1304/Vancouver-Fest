@@ -5,7 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import Home from './components/Home';
 
 function App() {
-    const { isLoading, isAuthenticated } = useAuth0();
+    const { isAuthenticated } = useAuth0();
     if (isAuthenticated) {
         console.log("User logged in")
     } else {

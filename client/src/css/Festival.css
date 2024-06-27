@@ -11,7 +11,6 @@ body {
 .festival-details {
     display: flex;
     flex-wrap: wrap;
-    /* background: #f9f9f9; */
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -49,7 +48,6 @@ img {
     border-radius: 10px;
 }
 
-/* Festival activities */
 .festival-activities {
     background: #fff;
     padding: 20px;
@@ -68,7 +66,7 @@ img {
     margin-left: auto;
     margin-right: auto;
     gap: 20px;
-    justify-content: center;  /* Center the grid items */
+    justify-content: center; 
     margin-left: 40px;
 }
 
@@ -93,7 +91,6 @@ img {
     color: #333;
 }
 
-/* Responsive design */
 @media (max-width: 768px) {
     .activity-item2 {
         flex: 1 1 calc(50% - 20px);
@@ -124,7 +121,6 @@ img {
     }
 }
 
-/* Add the following styles */
 
 .festival-details button {
     margin-top: 10px;

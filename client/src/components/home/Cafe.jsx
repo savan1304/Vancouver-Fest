@@ -15,6 +15,9 @@ const Cafe = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     useEffect(() => {
+        document.title = "Cafe";
+      }, []);
+    useEffect(() => {
         const fetchCafe = async () => {
             try {
                 const response = await fetch(`http://localhost:8000/api/Cafe/${id}`);
@@ -33,6 +36,7 @@ const Cafe = () => {
 
         fetchCafe();
     }, [id]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -72,6 +76,7 @@ const Cafe = () => {
     if (!cafe) {
         return <div>Loading...</div>;
     }
+    
 
     return (
         <div className="container">

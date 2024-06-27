@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
-// import Navbar from '../Navbar';
 import Navbar from '../components/Navbar';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -28,7 +27,6 @@ describe('Navbar Component', () => {
       </Router>
     );
 
-    // Check for navigation links
     expect(screen.getByText(/home/i)).toBeInTheDocument();
     expect(screen.getByText(/cafes/i)).toBeInTheDocument();
     expect(screen.getByText(/festivals/i)).toBeInTheDocument();
@@ -48,7 +46,6 @@ describe('Navbar Component', () => {
       </Router>
     );
 
-    // Check for logout button
     expect(screen.getByText(/logout/i)).toBeInTheDocument();
   });
 });

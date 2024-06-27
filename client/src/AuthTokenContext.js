@@ -31,7 +31,7 @@ function AuthTokenProvider({ children }) {
       }
     };
     getAccessToken();
-  }, [getAccessTokenSilently, isAuthenticated, loginWithRedirect]); // Add loginWithRedirect to dependencies
+  }, [getAccessTokenSilently, isAuthenticated, loginWithRedirect]);
 
   const value = { accessToken };
   return (

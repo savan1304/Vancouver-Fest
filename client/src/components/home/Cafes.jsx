@@ -25,6 +25,10 @@ function Cafe() {
         fetchCafes();
     }, []);
 
+    useEffect(() => {
+      document.title = "Cafes"
+    }, []);
+
     if (error) {
         return <div>Error: {error}</div>;
     }

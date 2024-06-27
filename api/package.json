@@ -5,12 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "preinstall": "npm i -D prisma",
+    "postinstall": "npx prisma db push"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "prisma": "^5.10.2"
+    "prisma": "^5.16.1"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",

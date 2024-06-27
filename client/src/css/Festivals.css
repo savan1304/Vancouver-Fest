@@ -14,7 +14,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.2s;
-  flex: 1 0 21%; /* Adjusts to ensure three items per row on larger screens */
+  flex: 1 0 21%;
   max-width: 300px;
   box-sizing: border-box;
 }
@@ -49,17 +49,16 @@
   margin: 4px 0;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .block {
-      flex: 1 0 45%; /* Adjusts to two items per row on medium screens */
+      flex: 1 0 45%;
       margin: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .block {
-      flex: 1 0 90%; /* Adjusts to one item per row on small screens */
+      flex: 1 0 90%; 
       margin: 10px;
   }
 }

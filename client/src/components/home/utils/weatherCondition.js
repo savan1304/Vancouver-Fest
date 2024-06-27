@@ -30,17 +30,14 @@ function getWeatherCondition(code) {
       99: "Thunderstorm with heavy hail",
     };
   
-    // Check for specific codes first
     if (weatherCodeMap[code]) {
       return weatherCodeMap[code];
     }
   
-    // Handle ranges of codes
     if (code >= 1 && code <= 3) {
-      return "Mainly clear, partly cloudy, or overcast"; // Group these similar conditions
+      return "Mainly clear, partly cloudy, or overcast"; 
     }
   
-    // Default case if code is not found
     return "Unknown weather code"; 
   }
 

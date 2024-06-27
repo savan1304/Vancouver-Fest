@@ -22,12 +22,14 @@ const UserProfilePage = () => {
     });
   };
 
+  useEffect(() => {
+    document.title = "Profile";
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = await getAccessTokenSilently();
-    //   await axios.post(`/api/user-profile/${user.sub.split('|')[1]}`, formData, {
-    //     headers: {
     await axios.post(`${process.env.REACT_APP_API_URL}/verify-user`, formData, {
         headers: {
           Authorization: `Bearer ${token}`
@@ -53,8 +55,6 @@ const UserProfilePage = () => {
     const fetchProfile = async () => {
       try {
         const token = await getAccessTokenSilently();
-        // const response = await axios.get(`/api/user-profile/${user.sub.split('|')[1]}`, {
-        //   headers: {
         const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user-profile`, {
             headers: {  
             Authorization: `Bearer ${token}`

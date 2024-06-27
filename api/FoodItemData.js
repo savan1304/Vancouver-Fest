@@ -173,7 +173,7 @@ async function main() {
   await prisma.foodItem.update({
     where: { id: 11 },  
     data: {
-      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }, , { id: 4 }, , { id: 5 }] },
+      cafes: { connect: [{ id: 3 }, { id: 4 }, { id: 7 }, { id: 4 }, { id: 5 }] },
     },
   });
 

@@ -1,15 +1,11 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-// import Cafe from "../components/home/Cafe"; // Adjust path as needed
-// import CafeBlock from "../components/home/CafeBlock"; // Adjust path
 import Cafe from "../components/home/Cafes";
 import CafeBlock from "../components/home/CafeBlock";
 
-// Mock fetch API globally
 global.fetch = jest.fn();
 
 describe("Cafe Component", () => {
-  // Sample cafe data
   const mockCafes = [
     {
       id: 1,
@@ -31,33 +27,11 @@ describe("Cafe Component", () => {
     },
   ];
 
-//   test("renders cafes from API correctly", async () => {
-//     // Mock successful fetch response
-//     fetch.mockResolvedValueOnce({
-//       ok: true,
-//       json: async () => mockCafes,
-//     });
-
-//     render(<Cafe />);
-
-//     // Wait for cafes to load
-//     await waitFor(() => {
-//         mockCafes.forEach(cafe => {
-//           // Use a regex with the 'i' flag for case-insensitive matching
-//           expect(screen.getByText(cafe.name)).toBeInTheDocument(); 
-//           expect(screen.getByText(cafe.hours)).toBeInTheDocument();
-//           expect(screen.getByText(cafe.address)).toBeInTheDocument();
-//         });
-//       });
-//     });
-
   test("renders error message when fetch fails", async () => {
-    // Mock failed fetch response
     fetch.mockRejectedValueOnce(new Error("API error"));
 
     render(<Cafe />);
 
-    // Wait for error message
     await waitFor(() => {
       expect(screen.getByText("Error: API error")).toBeInTheDocument();
     });

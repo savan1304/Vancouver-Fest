@@ -7,6 +7,10 @@ function Festival() {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+      document.title = "Festivals";
+    }, []);
+
+    useEffect(() => {
         const fetchFestivals = async () => {
         try {
             const response = await fetch('http://localhost:8000/api/Festivals'); 
@@ -44,8 +48,6 @@ function Festival() {
             location={festival.Location}
             numberOfAttendees={festival.numberOfAttendees}
             imageUrl={festival.imageUrl}
-          //   foodItems={festival.foodItems}
-          //   cafes={festival.cafes}
           />
         ))}
         </div>

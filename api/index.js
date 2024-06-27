@@ -7,7 +7,6 @@ import cors from "cors";
 import { auth } from "express-oauth2-jwt-bearer";
 import axios from 'axios';
 
-// this is a middleware that will validate the access token sent by the client
 const requireAuth = auth({
   audience: process.env.AUTH0_AUDIENCE,
   issuerBaseURL: process.env.AUTH0_ISSUER,
@@ -15,9 +14,6 @@ const requireAuth = auth({
 });
 
 const app = express();
-// const userLikes = {};
-const cafeLikes = {}; // In-memory store for cafe likes
-const festivalLikes = {}; // In-memory store for festival likes
 
 app.use(cors({origin: 'http://localhost:3000'}));
 app.use(express.urlencoded({ extended: true }));
@@ -38,7 +34,6 @@ app.post("/verify-user", requireAuth, async (req, res) => {
   const auth0Id = req.auth.payload.sub; 
   const email = req.auth.payload[`${process.env.AUTH0_AUDIENCE}/email`];
   let { name, address, dateOfBirth, country } = req.body;
-  //const dateOfBirth = new Date(dob + "T00:00:00Z"); // Append time and timezone
   dateOfBirth = new Date(dateOfBirth +  "T00:00:00Z")
 
   let user = await prisma.user.findUnique({
@@ -66,13 +61,11 @@ app.post("/verify-user", requireAuth, async (req, res) => {
 });
 
 app.get("/api/user-profile", requireAuth, async (req, res) => {
-  // const { id } = req.params;
   const auth0Id = req.auth.payload.sub;
   console.log(req.auth.payload)
   try {
     const user = await prisma.user.findUnique({
       where: { auth0Id },
-      // where: auth0Id,
     });
 
     const userProfile = await prisma.user.findUnique({
@@ -92,16 +85,12 @@ app.get("/api/user-profile", requireAuth, async (req, res) => {
   }
 });
 
-// Endpoint to update user profile
 app.post("/api/user-profile/:id", requireAuth, async (req, res) => {
   const { id } = req.params;
   const { name, address, dateOfBirth, country } = req.body;
 
   try {
     const updatedUserProfile = await prisma.user.upsert({
-      // where: { auth0Id: id },
-      // update: { name, address, dateOfBirth, country },
-      // create: { auth0Id: id, email: req.auth.payload.email, name, address, dateOfBirth, country },
       where: { id: parseInt(id) },
       update: { name, address, dateOfBirth, country },
       create: { id: parseInt(id), email: req.auth.payload.email, name, address, dateOfBirth, country },
@@ -113,17 +102,6 @@ app.post("/api/user-profile/:id", requireAuth, async (req, res) => {
   }
 });
 
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  // Validate user credentials
-  const token = generateTokenForUser(user); // Implement this function to generate a JWT or session token
-  res.cookie('authToken', token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', // Ensure the cookie is only sent over HTTPS
-    maxAge: 24 * 60 * 60 * 1000, // 1 day
-  });
-  res.status(200).send('Login successful');
-});
 
 app.get('/api/Festivals', async (req, res) => {
   try {
@@ -182,14 +160,14 @@ app.get('/api/Cafe/:id', async (req, res) => {
 });
 
 app.post('/api/comments', async (req, res) => {
-  const { name, email, message, cafeId } = req.body;
+  const { name, message, cafeId } = req.body;
 
   try {
       const newComment = await prisma.comment.create({
           data: {
               name,
               message,
-              cafeId : parseInt(cafeId),
+              cafeId : parseInt(cafeId),  
           },
       });
       res.status(201).json(newComment);
@@ -199,135 +177,7 @@ app.post('/api/comments', async (req, res) => {
   }
 });
 
-// // Endpoint to like a cafe
-// app.post('/api/cafe/:id/like', async (req, res) => {
-//   const { id } = req.params;
-//   const { userId } = req.body;
-//   console.log(userId)
 
-//   const userLikeKey = `cafe_${id}_user_${String(userId)}`;
-
-//   if (cafeLikes[userLikeKey]) {
-//     return res.status(400).json({ error: 'User has already liked this cafe' });
-//   }
-
-//   try {
-//     const updatedCafe = await prisma.cafe.update({
-//       where: { id: parseInt(id) },
-//       data: {
-//         likes: { increment: 1 },
-//       },
-//     });
-
-//     cafeLikes[userLikeKey] = true;
-
-//     res.json(updatedCafe);
-//   } catch (error) {
-//     console.error('Error liking cafe:', error);
-//     res.status(500).json({ error: 'Failed to like cafe' });
-//   }
-// });
-
-// // Endpoint to like a festival
-// app.post('/api/festival/:id/like', async (req, res) => {
-//   const { id } = req.params;
-//   const { userId } = req.body;
-
-//   const userLikeKey = `festival_${id}_user_${String(userId)}`;
-
-//   if (festivalLikes[userLikeKey]) {
-//     return res.status(400).json({ error: 'User has already liked this festival' });
-//   }
-
-//   console.log("Inside festival like api")
-//   try {
-//     const updatedFestival = await prisma.festival.update({
-//       where: { id: parseInt(id) },
-//       data: {
-//         likes: { increment: 1 },
-//       },
-//     });
-
-//     festivalLikes[userLikeKey] = true;
-
-//     res.json(updatedFestival);
-//   } catch (error) {
-//     console.error('Error liking festival:', error);
-//     res.status(500).json({ error: 'Failed to like festival' });
-//   }
-// });
-
-// app.post('/api/cafe/:id/like', async (req, res) => {
-//   const { id } = req.params;
-//   const { userId } = req.body;
-
-//   const userLikeKey = `cafe_${id}_user_${String(userId)}`;
-
-//   if (userLikes[userLikeKey]) {
-//     return res.status(400).json({ error: 'User has already liked this cafe' });
-//   }
-
-//   try {
-//     const updatedCafe = await prisma.cafe.update({
-//       where: { id: parseInt(id) },
-//       data: {
-//         likes: { increment: 1 },
-//       },
-//     });
-
-//     userLikes[userLikeKey] = true;
-
-//     res.json(updatedCafe);
-//   } catch (error) {
-//     console.error('Error liking cafe:', error);
-//     res.status(500).json({ error: 'Failed to like cafe' });
-//   }
-// });
-
-// // Endpoint to like a cafe
-// // app.post('/api/cafe/:id/like', async (req, res) => {
-// //   // const { id } = req.params;
-
-// //   try {
-// //     const updatedCafe = await prisma.cafe.update({
-// //       where: { id: parseInt(req.params.id) },
-// //       data: {
-// //         likes: { increment: 1 }
-// //       }
-// //     });
-
-// //     res.json(updatedCafe);
-// //   } catch (error) {
-// //     console.error('Error liking cafe:', error);
-// //     res.status(500).json({ error: 'Failed to like cafe' });
-// //   }
-// // });
-
-// // Endpoint to like a festival
-// app.post('/api/festival/:id/like', async (req, res) => {
-//   const { id } = req.params;
-
-//   try {
-//     const updatedFestival = await prisma.festival.update({
-//       where: { id: parseInt(id) },
-//       data: {
-//         likes: { increment: 1 }
-//       }
-//     });
-
-//     res.json(updatedFestival);
-//   } catch (error) {
-//     console.error('Error liking festival:', error);
-//     res.status(500).json({ error: 'Failed to like festival' });
-//   }
-// });
-
-
-// app.listen(8000, () => {
-//   console.log("Server running on http://localhost:8000 🎉 🚀");
-// });
-
-const PORT = parseInt(process.env.PORT) || 8080;
-app.listen(PORT, () => {
- console.log(`Server running on http://localhost:${PORT} 🎉 🚀`);
-})
+app.listen(8000, () => {
+  console.log("Server running on http://localhost:8000 🎉 🚀");
+});

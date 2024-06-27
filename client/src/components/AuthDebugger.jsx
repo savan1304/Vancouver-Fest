@@ -1,9 +1,14 @@
+import React, { useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useAuthToken } from "../AuthTokenContext";
 
 export default function AuthDebugger() {
   const { user } = useAuth0();
   const { accessToken } = useAuthToken();
+
+  useEffect(() => {
+    document.title = "AuthDebugger";
+  }, []);
 
   return (
     <div>

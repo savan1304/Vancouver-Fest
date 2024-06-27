@@ -3,9 +3,6 @@ import { useParams } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 import LoginSignup from './LoginSignup';
 import '../../css/Festival.css';
-import Navbar from '../Navbar';
-import Footer from '../Footer';
-import Geocode from "react-geocode";
 import getCoordsForAddress from "./utils/location";
 import getWeatherForAddress from './utils/weather';
 import getWeatherCondition from './utils/weatherCondition';
@@ -15,12 +12,15 @@ import { format } from 'date-fns';
 
 const Festival = () => {
     const { id } = useParams();
-    // const id = 1;
     const [festival, setFestival] = useState(null);
     const [error, setError] = useState(null);
     const { isAuthenticated } = useAuth0();
 
     console.log("id", id);
+
+    useEffect(() => {
+        document.title = "Festival";
+      }, []);
 
     useEffect(() => {
         const fetchFestival = async () => {

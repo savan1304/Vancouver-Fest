@@ -1,4 +1,3 @@
-// auth0-provider-with-history.jsx
 import React from "react";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import NotFound from "./components/NotFound";
@@ -17,11 +16,6 @@ import Layout from "./layout"
 
     export const Auth0ProviderWithHistory = ({ children }) => {
         const requestedScopes = ["profile", "email"];
-        // const history = useHistory();
-
-        // const onRedirectCallback = (appState) => {
-        //     history.push(appState?.returnTo || window.location.pathname);
-        // };
 
         return (
             <React.StrictMode>
@@ -34,7 +28,6 @@ import Layout from "./layout"
                             audience: process.env.REACT_APP_AUTH0_AUDIENCE,
                             scope: requestedScopes.join(" "),
                         }}
-                        // onRedirectCallback={onRedirectCallback}
                         cacheLocation="localstorage"
                     >
                         <AuthTokenProvider>
