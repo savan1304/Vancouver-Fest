@@ -15,7 +15,7 @@ const CafeBlock = ({id, name, hours, address, description, priceRange, imageUrl}
         )
     };
     return (
-        <div className="block">
+        <div className="cafe-block">
             <header>
                 <img src={imageUrl} alt={name} className="cafe-image"/>
                 <h2 onClick={handleNameClick} className="cafe-name">{name}</h2> 
