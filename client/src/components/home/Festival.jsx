@@ -94,6 +94,7 @@ const Festival = () => {
 
     return (
         <div>
+            <Navbar />
 
             <div className="container">
             <div className="festival-details">
@@ -128,6 +129,7 @@ const Festival = () => {
                 </div>
             </section>
         </div>
+    );  
     );  
 };
 
