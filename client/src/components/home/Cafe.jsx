@@ -93,7 +93,7 @@ const Cafe = () => {
                 </div>
             </div>
             <section className="cafe-activities">
-                <h2>Food Items</h2>
+                <h2>Menu</h2>
                 <div className="category-filter">
                     <label htmlFor="category">Filter </label>
                     <select id="category" value={selectedCategory} onChange={handleCategoryChange}>
