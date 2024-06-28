@@ -108,6 +108,7 @@ app.get('/api/Festivals', async (req, res) => {
     const Festivals = await prisma.Festival.findMany();
     res.json(Festivals);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to fetch Festivals' });
   }
 });
@@ -178,6 +179,11 @@ app.post('/api/comments', async (req, res) => {
 });
 
 
-app.listen(8000, () => {
-  console.log("Server running on http://localhost:8000 🎉 🚀");
+// app.listen(8000, () => {
+//   console.log("Server running on http://localhost:8000 🎉 🚀");
+// });
+
+const PORT = parseInt(process.env.PORT) || 8080;
+app.listen(PORT, () => {
+ console.log(`Server running on http://localhost:${PORT} 🎉 🚀`);
 });

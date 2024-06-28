@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index.js",
     "preinstall": "npm i -D prisma",
-    "postinstall": "npx prisma db push"
+    "postinstall": "npx prisma generate && npx prisma db push"
   },
   "author": "",
   "license": "ISC",
