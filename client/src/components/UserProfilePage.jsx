@@ -35,7 +35,6 @@ const UserProfilePage = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log(formData)
       setIsEditing(false);
       alert('Profile updated successfully');
     } catch (error) {

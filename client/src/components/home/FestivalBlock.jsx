@@ -8,9 +8,7 @@ const FestivalBlock = ({id, name, tagline, startDate, endDate, location, imageUr
     const navigate = useNavigate();
 
     const handleNameClick = () => {
-        console.log("Inside handleNameClick in FestivalBlock.jsx")
       navigate(`/Festival/${id}`);
-      console.log("Afer navigate to /Festival line")
         return (
             <Festival id={id} />
         )

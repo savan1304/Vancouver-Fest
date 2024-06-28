@@ -6,11 +6,6 @@ import Home from './components/Home';
 
 function App() {
     const { isAuthenticated } = useAuth0();
-    if (isAuthenticated) {
-        console.log("User logged in")
-    } else {
-        console.log("without log in ")
-    }
 
     return (
         <div className="app">

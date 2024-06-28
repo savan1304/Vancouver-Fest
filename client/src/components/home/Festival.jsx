@@ -16,8 +16,6 @@ const Festival = () => {
     const [error, setError] = useState(null);
     const { isAuthenticated } = useAuth0();
 
-    console.log("id", id);
-
     useEffect(() => {
         document.title = "Festival";
       }, []);
@@ -25,16 +23,13 @@ const Festival = () => {
     useEffect(() => {
         const fetchFestival = async () => {
             try {
-                console.log("id", id);
                 const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Festival/${id}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const data = await response.json();
-                console.log(data)
 
                 const location = data.Location;
-                console.log("Location:", location);
 
                 let coordinates;
                 try{
@@ -45,14 +40,10 @@ const Festival = () => {
                 }
                 const lat = coordinates.lat;
                 const lng = coordinates.lng;
-                console.log(lat)
-                console.log(lng)
 
                 let weatherData;
                 const formattedStartDate = data.startDate.slice(0, 10); 
                 const formattedEndDate = data.endDate.slice(0, 10);
-                console.log(formattedStartDate)
-                console.log(formattedEndDate)
                 try{
                     weatherData = await getWeatherForAddress(lat, lng, formattedStartDate, formattedEndDate);
                 }
@@ -62,7 +53,6 @@ const Festival = () => {
                 const max_temp = weatherData.avgMaxTemp;
                 const min_temp = weatherData.avgMinTemp;
                 const weatherCode = weatherData.mostCommonCode;
-                console.log("max_temp: ", max_temp, "min_temp: ", min_temp, "weatherCode: ", weatherCode)
 
                 const weatherCondition = getWeatherCondition(weatherCode)
 

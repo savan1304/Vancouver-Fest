@@ -4,7 +4,6 @@ import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 
 const LoginSignup = () => {
   const { logout, user, isAuthenticated, loginWithRedirect } = useAuth0();
-  console.log("inside LoginSignUp.jsx")
   const redirect_uri= `${window.location.origin}/Festival/:id`
 
 
