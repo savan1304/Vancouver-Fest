@@ -20,7 +20,7 @@ const Cafe = () => {
     useEffect(() => {
         const fetchCafe = async () => {
             try {
-                const response = await fetch(`http://localhost:8000/api/Cafe/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Cafe/${id}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -41,7 +41,7 @@ const Cafe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/comments', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/comments`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...newComment, cafeId: id })

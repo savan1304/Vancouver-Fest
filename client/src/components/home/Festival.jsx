@@ -26,7 +26,7 @@ const Festival = () => {
         const fetchFestival = async () => {
             try {
                 console.log("id", id);
-                const response = await fetch(`http://localhost:8000/api/Festival/${id}`);
+                const response = await fetch(`${process.env.REACT_APP_API_URL}/api/Festival/${id}`);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
