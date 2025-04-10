@@ -1,4 +1,6 @@
-A SaaS web app built on React, NodeJs, Auth0 and Prisma.
+## Vancouver-Fest
+
+A SaaS web app built with React, NodeJs, Auth0 and Prisma.
 
 - Anonymous users can use the app. However, user identity is required for certain functionalities.
 
